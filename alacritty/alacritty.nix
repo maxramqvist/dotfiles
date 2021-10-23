@@ -1,0 +1,102 @@
+{ config, pkgs, fontSize, ... }:
+
+let
+  colorScheme = import ../color-schemes/campbell.nix;
+  #colorScheme = import ../color-schemes/dracula.nix;
+in {
+  home-manager.users.max.programs = {
+    alacritty = {
+      enable = true;
+      settings = {
+        live_config_reload = true;
+        env.TERM = "alacritty";
+        shell.program = "${pkgs.zsh}/bin/zsh";
+        selection.save_to_clipboard = false;
+        url = {
+          launcher = "open";
+          modifiers = "shift";
+        };
+        mouse_bindings = [
+          {
+            mouse = "Middle";
+            action = "ClearSelection";
+          }
+        ];
+        background_opacity = 1;
+        bell = {
+          animation = "EaseOutExpo";
+          duration = 10;
+          color = "#6272A4";
+        };
+        cursor = {
+          style = "Block";
+          unfocused_hollow = true;
+        };
+        font = {
+          use_thin_strokes = true;
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          glyph_offset = {
+            x = 0;
+            y = 0;
+          };
+          size = 14;
+          normal = {
+            family = "UbuntuMono Nerd Font";
+            style = "Medium";
+          };
+          bold = {
+            family = "UbuntuMono Nerd Font";
+            style = "Bold";
+          };
+          italic = {
+            family = "UbuntuMono Nerd Font";
+            style = "Italic";
+          };
+          bold_italic = {
+            family = "UbuntuMono Nerd Font";
+            style = "Bold Italic";
+          };
+        };
+        window = {
+          decorations = "full";
+          padding = {
+            x = 5;
+            y = 5;
+          };
+        };
+        draw_bold_text_with_bright_colors = true;
+        colors = {
+          name = colorScheme.name;
+          primary = {
+            background = colorScheme.black;
+            foreground = colorScheme.white;
+          };
+          normal = {
+            black = colorScheme.black;
+            red = colorScheme.red;
+            green = colorScheme.green;
+            yellow = colorScheme.yellow;
+            blue = colorScheme.blue;
+            magenta = colorScheme.magenta;
+            cyan = colorScheme.cyan;
+            white = colorScheme.white;
+          };
+          bright = {
+            black = colorScheme.blackBright;
+            red = colorScheme.redBright;
+            green = colorScheme.greenBright;
+            yellow = colorScheme.yellowBright;
+            blue = colorScheme.blueBright;
+            magenta = colorScheme.magentaBright;
+            cyan = colorScheme.cyanBright;
+            white = colorScheme.whiteBright;
+          };
+        };
+      };
+    };
+  };
+}
+
