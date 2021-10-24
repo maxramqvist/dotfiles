@@ -68,16 +68,22 @@ in
     };
     plugins = with pkgs.vimPlugins; [
       coc-nvim                # Until coc-plugin mentioned above is fixed
-      nvim-treesitter         # improved syntax highlighting
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+        plugins: pkgs.tree-sitter.allGrammars)
+        ) # improved syntax highlighting, all grammers installed the NixOS way
       vim-terraform           # terraform ftw
       vim-nix                 # vim syntax for nix ftw
       vim-fugitive            # git plugin
       nerdtree                # tree explorer
       nerdtree-git-plugin     # shows files git status on the NerdTree
-      nvim-web-devicons       # icons for filebrowser
+      # nvim-web-devicons     # icons for filebrowser, not sure how to enable in nerdtree
       fzf-vim                 # fuzzy finder
-      galaxyline-nvim         # nice statusline
       nvim-lspconfig          # configure the lsp
+      vim-go                  # lets go!
+      coc-go
+      coc-prettier
+      coc-python
+      coc-yaml
     ];
   };
 }

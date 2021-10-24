@@ -8,11 +8,11 @@ vim.cmd [[
   set noerrorbells
   set noswapfile
   set shortmess+=c
+  set completeopt=menuone,noselect
 ]]
-
 -- Performance
-opt.lazyredraw = true;
-
+opt.lazyredraw = true
+opt.updatetime = 300
 -- Indentation
 opt.smartindent = true
 opt.tabstop = 2
@@ -26,7 +26,8 @@ opt.scrolloff = 3
 opt.viminfo = ""
 opt.viminfofile = "NONE"
 
-opt.signcolumn = "number"
+opt.cmdheight = 2
+
 -- Miscellaneous quality of life
 opt.compatible = false
 opt.hidden = true
