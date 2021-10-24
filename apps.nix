@@ -40,7 +40,7 @@
     enable = true;
   };
   
-  # virtualisation.podman = {
+  # virtualisation.podman = { # also add docker-compose replacement, some python script... google
   #   enable = true;
   #   dockerCompat = true;
   # };

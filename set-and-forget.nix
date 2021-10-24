@@ -36,6 +36,12 @@
     keyMap = "sv-latin1";
   };
 
+  # SSD stuff
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 1;
+  };
+
+  services.fstrim.enable = true;
 
   # Disable Nvidia
   hardware.nvidiaOptimus.disable = lib.mkDefault true;
