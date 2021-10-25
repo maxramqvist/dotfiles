@@ -4,11 +4,20 @@
   # If your settings aren't being saved for some applications (gtk3 applications, firefox), like the size of file selection windows, or the size of the save dialog, you will need to enable dconf. 
   programs.dconf.enable = true; 
 
-  programs.xwayland.enable = false;
-  
+  xdg.portal = {
+    enable = true;
+    #gtkUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+    ];
+  };
+
   programs.sway = {
     enable = true;
-    wrapperFeatures.gtk = true; # so that gtk works properly
+    wrapperFeatures = {
+      gtk = true; # so that gtk works properly
+      base = true; # not sure, but testing for screen sharing
+    };
     extraPackages = with pkgs; [
       swaylock
       swayidle

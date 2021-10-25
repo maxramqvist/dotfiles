@@ -35,7 +35,7 @@ in
         userName  = "maxramqvist";
         userEmail = "max.ramqvist@gmail.com";
       };
-    starship = {
+      starship = {
         enable = true;
         enableZshIntegration = true;
         settings = {
