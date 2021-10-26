@@ -31,59 +31,51 @@ in
     extraConfig = ''
       luafile $HOME/dotfiles/nvim/config.lua
       luafile $HOME/dotfiles/nvim/lsp.lua
+      luafile $HOME/dotfiles/nvim/telescope.lua
+      luafile $HOME/dotfiles/nvim/cmp.lua
     '';
     extraPackages = with pkgs; [
-     # Is this needed? tree-sitter
-     sumneko-lua-language-server
+ 
      # Requirements for treesitter
      gcc
 
      # extra language servers
+     sumneko-lua-language-server
      terraform-lsp
      nodePackages.typescript nodePackages.typescript-language-server
      gopls
      rnix-lsp             # nix lsp server
     ];
-    coc = { # Completion server with LSP support
-      enable = true; # Enable doesnt work, but settings work. https://github.com/nix-community/home-manager/issues/2386
-      settings = {
-        tsserver.enable = true;
-        tslint.configFile = "tslint.json";
-        suggest = {
-          enablePreview = true;
-        };
-        languageserver = {
-          "nix" = {
-            "command" = "rnix-lsp";
-            "filetypes" = [ "nix" ];
-          };
-          "go" = {
-            "command" = "gopls";
-            "rootPatterns" = ["go.mod"];
-            "trace.server" = "verbose";
-            "filetypes" = ["go"];
-          };
-        };
-      };
-    };
     plugins = with pkgs.vimPlugins; [
-      coc-nvim                # Until coc-plugin mentioned above is fixed
+
+      # Tree-sitter with all grammars
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (
         plugins: pkgs.tree-sitter.allGrammars)
         ) # improved syntax highlighting, all grammers installed the NixOS way
+      nvim-lspconfig          # configure the lsp - needs a file that setups the language servers aswell
+
+      # autocomplete with nvim-cmp
+      cmp-buffer
+      cmp-nvim-lsp
+      nvim-cmp
+
+      # snippets
+      luasnip
+      cmp_luasnip
+
+      # Language support
       vim-terraform           # terraform ftw
       vim-nix                 # vim syntax for nix ftw
-      vim-fugitive            # git plugin
+      vim-go                  # lets go!
+
+      telescope-nvim
+      #fzf-vim                 # fuzzy finder - replace with telescope?
+      
+      # Filebrowser
       nerdtree                # tree explorer
       nerdtree-git-plugin     # shows files git status on the NerdTree
       # nvim-web-devicons     # icons for filebrowser, not sure how to enable in nerdtree
-      fzf-vim                 # fuzzy finder
-      nvim-lspconfig          # configure the lsp
-      vim-go                  # lets go!
-      coc-go
-      coc-prettier
-      coc-python
-      coc-yaml
+      
     ];
   };
 }
