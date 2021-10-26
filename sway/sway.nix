@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 {
   home-manager.users.max.home = {
-    file = {
-      ".cache/backgrounds/leaves.jpg".source = ../bg/leaves.jpg;
-    };
     sessionVariables = {
       GTK_THEME = "Dracula";
     };
@@ -48,6 +45,8 @@
           "Mod4+space" = "exec wofi --show drun --allow-images";
           "Mod4+Shift+space" = "exec wofi --show run";
           "Mod4+Shift+e" = "exec wofi-emoji";
+          "Mod4+Backspace" = "split toggle";
+
         };
 
         
@@ -69,7 +68,7 @@
       # Probably replace output with Kanshi
       output = {
         # Set wallpaper
-        "*" = { bg = "/home/max/.cache/backgrounds/leaves.jpg fill #000000"; };
+        "*" = { bg = "/home/max/dotfiles/bg/jupiter-PIA23444.jpg fill #000000"; };
 
         # You can get the names of your outputs by running: swaymsg -t get_outputs
         eDP-1 = {
