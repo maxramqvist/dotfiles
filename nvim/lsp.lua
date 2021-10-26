@@ -6,6 +6,12 @@
 -- Change these to whatever languages you use
 require'lspconfig'.rnix.setup{}
 require'lspconfig'.sumneko_lua.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.terraformls.setup{
+  cmd = {"terraform-lsp"};
+}
+require'lspconfig'.tsserver.setup{}
+
 vim.o.completeopt = "menuone,noselect"
 
 
@@ -35,7 +41,7 @@ require'lspconfig'.sumneko_lua.setup {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
         -- Setup your lua path
-        path = runtime_path,
+        -- path = runtime_path,
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global

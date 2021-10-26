@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, vimUtils, ... }:
 
 /*
 Todo:
@@ -12,6 +12,19 @@ Todo:
 
 let
   colorScheme = import ../color-schemes/campbell.nix;
+
+  # installs a vim plugin from git with a given tag / branch
+  pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
+    version = ref;
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+      ref = ref;
+    };
+  };
+
+  # always installs latest version
+  plugin = pluginGit "HEAD";
 in 
 
 {
@@ -26,6 +39,7 @@ in
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
+    withPython3 = true;
     vimdiffAlias = true;
     # Add theme https://github.com/projekt0n/github-nvim-theme
     extraConfig = ''
@@ -33,26 +47,33 @@ in
       luafile $HOME/dotfiles/nvim/lsp.lua
       luafile $HOME/dotfiles/nvim/telescope.lua
       luafile $HOME/dotfiles/nvim/cmp.lua
-    '';
+      '';
     extraPackages = with pkgs; [
  
      # Requirements for treesitter
      gcc
+     fd
 
      # extra language servers
      sumneko-lua-language-server
      terraform-lsp
      nodePackages.typescript nodePackages.typescript-language-server
      gopls
-     rnix-lsp             # nix lsp server
+     rnix-lsp # nix lsp server
+     python39
+     python39Packages.python-lsp-server
     ];
     plugins = with pkgs.vimPlugins; [
 
+      (plugin "nvim-treesitter/nvim-treesitter")
+      
       # Tree-sitter with all grammars
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-        plugins: pkgs.tree-sitter.allGrammars)
-        ) # improved syntax highlighting, all grammers installed the NixOS way
-      nvim-lspconfig          # configure the lsp - needs a file that setups the language servers aswell
+#      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+#        plugins: pkgs.tree-sitter.allGrammars)
+#        ) # improved syntax highlighting, all grammars installed the NixOS way
+
+      # sane setup for language servers
+      nvim-lspconfig
 
       # autocomplete with nvim-cmp
       cmp-buffer
@@ -68,14 +89,18 @@ in
       vim-nix                 # vim syntax for nix ftw
       vim-go                  # lets go!
 
+      # find stuff
       telescope-nvim
-      #fzf-vim                 # fuzzy finder - replace with telescope?
+      telescope-fzf-native-nvim
       
       # Filebrowser
       nerdtree                # tree explorer
       nerdtree-git-plugin     # shows files git status on the NerdTree
-      # nvim-web-devicons     # icons for filebrowser, not sure how to enable in nerdtree
       
+      nvim-web-devicons     # icons for filebrowser, not sure how to enable in nerdtree
+      
+      # status line
+      lualine-nvim
     ];
   };
 }
