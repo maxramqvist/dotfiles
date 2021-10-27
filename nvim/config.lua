@@ -37,6 +37,22 @@ opt.cmdheight = 2
 opt.compatible = false
 opt.hidden = true
 
+require('github-theme').setup({
+  theme_style = "dark_default",
+--  function_style = "italic",
+--  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+--  colors = {hint = "orange", error = "#ff0000"}
+})
+-- status line
+require'lualine'.setup {
+options = {
+    theme = 'github',
+  }
+}
+
+
 --Treesitter setup
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -51,7 +67,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-
--- status line
-require'lualine'.setup()
 

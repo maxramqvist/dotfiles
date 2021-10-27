@@ -1,8 +1,9 @@
 { config, pkgs, fontSize, ... }:
 
 let
-  colorScheme = import ../color-schemes/campbell.nix;
+  #colorScheme = import ../color-schemes/campbell.nix;
   #colorScheme = import ../color-schemes/dracula.nix;
+  colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
 in {
   home-manager.users.max.programs = {
     alacritty = {
@@ -71,8 +72,8 @@ in {
         colors = {
           name = colorScheme.name;
           primary = {
-            background = colorScheme.black;
-            foreground = colorScheme.white;
+            background = colorScheme.background;
+            foreground = colorScheme.foreground;
           };
           normal = {
             black = colorScheme.black;

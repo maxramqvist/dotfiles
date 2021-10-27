@@ -1,6 +1,8 @@
 {
   name = "Campbell";
   reference = "https://docs.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes#campbell";
+  background = "#0c0c0c";
+  foreground = "#cccccc";
   black = "#0c0c0c";
   red = "#c50f1f";
   green = "#13a10e";

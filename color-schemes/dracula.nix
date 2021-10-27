@@ -1,6 +1,8 @@
 {
   name = "Dracula";
   reference = "https://github.com/dracula/alacritty/blob/master/dracula.yml";
+  background = "0x000000";
+  foreground = "0xbfbfbf";
   black = "0x000000";
   red = "0xff5555";
   green = "0x50fa7b";

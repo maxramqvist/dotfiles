@@ -3,11 +3,11 @@
 
 /*
 Todo:
-  - goto definition
-  - hur söka kod?
-  - autocomplete, både från lokala variabler och från libbar
-  - copy paste genom global clipboard
-  - tema
+  - [ ] goto definition
+  - [x] hur söka kod? <Leader>fg
+  - [x] autocomplete, både från lokala variabler och från libbar: nvim-cmp
+  - [ ] copy paste genom global clipboard
+  - [ ] tema
 */
 
 let
@@ -66,7 +66,7 @@ in
     plugins = with pkgs.vimPlugins; [
 
       (plugin "nvim-treesitter/nvim-treesitter")
-      
+      (plugin "projekt0n/github-nvim-theme")
       # Tree-sitter with all grammars
 #      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
 #        plugins: pkgs.tree-sitter.allGrammars)
