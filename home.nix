@@ -62,6 +62,7 @@ in
           };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
+          zstyle ':completion:*' menu select
           '';
         history = {
           size = 10000;
@@ -69,11 +70,11 @@ in
           extended = true;
           share = true;
         };
-        plugins = [
-        ];
         oh-my-zsh = {
           enable = true;
-          plugins = [ "git" ];
+          plugins = [ 
+            "git" "z"
+          ];
         };
       };
       fzf = {

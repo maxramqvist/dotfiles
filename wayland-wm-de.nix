@@ -22,7 +22,6 @@
       swaylock
       swayidle
       wl-clipboard
-      mako # notification daemon
       wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
       wofi-emoji nordic
       # sway polkit

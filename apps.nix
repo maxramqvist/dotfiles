@@ -32,6 +32,7 @@
     nomad consul terraform azure-cli
     # zsh
     zsh
+    zsh-z
     # pulseaudio + bluetooth
     pavucontrol pulsemixer 
   ];

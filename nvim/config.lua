@@ -12,6 +12,8 @@ vim.cmd [[
   set shortmess+=c
   set completeopt=menuone,noselect
   set number
+  set termguicolors
+  set background=dark
 ]]
 -- Performance
 opt.lazyredraw = true

@@ -1,8 +1,27 @@
 { config, pkgs, lib, ... }:
+let
+  #colorScheme = import ../color-schemes/campbell.nix;
+  colorScheme = import ../color-schemes/dracula.nix;
+  #colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
+in
 {
   home-manager.users.max.home = {
     sessionVariables = {
       GTK_THEME = "Dracula";
+    };
+  };
+  home-manager.users.max.programs = {
+    mako = {
+      enable = true;
+      anchor = "bottom-right";
+      backgroundColor = "#${colorScheme.background}";
+      borderColor = "#${colorScheme.foreground}";
+      borderRadius = 0;
+      borderSize = 1;
+      defaultTimeout = 0; # no timeout, keep until acknowledged
+      font = "monospace 12";
+#      iconPath = ""; 
+      icons = true;
     };
   };
   home-manager.users.max.wayland.windowManager.sway = {
