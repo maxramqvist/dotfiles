@@ -18,7 +18,7 @@ in
       borderColor = "#${colorScheme.foreground}";
       borderRadius = 0;
       borderSize = 1;
-      defaultTimeout = 0; # no timeout, keep until acknowledged
+      defaultTimeout = 20000; # ms. 0 = no timeout, keep until acknowledged
       font = "monospace 12";
 #      iconPath = ""; 
       icons = true;
