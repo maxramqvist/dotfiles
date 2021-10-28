@@ -41,7 +41,6 @@ in
     withNodeJs = true;
     withPython3 = true;
     vimdiffAlias = true;
-    # Add theme https://github.com/projekt0n/github-nvim-theme
     extraConfig = ''
       luafile $HOME/dotfiles/nvim/config.lua
       luafile $HOME/dotfiles/nvim/lsp.lua

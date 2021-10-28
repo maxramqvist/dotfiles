@@ -30,7 +30,8 @@ in
       systemdIntegration = true;
       wrapperFeatures.gtk = true;
       extraSessionCommands = 
-      ''  
+      ''
+        export EDITOR=nvim
         export MOZ_ENABLE_WAYLAND=1
         export WLR_DRM_NO_MODIFIERS=1
         export SDL_VIDEODRIVER=wayland

@@ -14,6 +14,12 @@ vim.cmd [[
   set number
   set termguicolors
   set background=dark
+  nnoremap <C-Left> :tabprevious<CR>                                                                            
+  nnoremap <C-Right> :tabnext<CR>
+  nnoremap <C-Up> :tabnew<CR>
+  nnoremap <C-j> :tabprevious<CR>                                                                            
+  nnoremap <C-k> :tabnext<CR>
+
 ]]
 -- Performance
 opt.lazyredraw = true
