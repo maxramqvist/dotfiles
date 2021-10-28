@@ -29,7 +29,7 @@
     vscode
     wget
     # work
-    nomad consul terraform azure-cli
+    nomad consul terraform azure-cli openssl
     # zsh
     zsh
     zsh-z
