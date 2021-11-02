@@ -17,7 +17,6 @@
     lsof
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
     nodejs-16_x
-    powertop
     python310
     ripgrep
     slack
@@ -40,7 +39,18 @@
   virtualisation.docker = {
     enable = true;
   };
-  
+
+#  services.netdata = {
+#    enable = true;
+#    config = {
+#      global = {
+#        "memory mode" = "dbengine";
+#        "debug log" = "none";
+#        "access log" = "none";
+#        "error log" = "syslog";
+#      };
+#    };
+#  };
   # virtualisation.podman = { # also add docker-compose replacement, some python script... google
   #   enable = true;
   #   dockerCompat = true;
