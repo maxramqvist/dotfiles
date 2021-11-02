@@ -59,6 +59,8 @@ in
             tf = "terraform";
             aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
             v = "nvim";
+            ip = "ip --color";
+            ssh = "TERM=xterm-256color ssh";
           };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
