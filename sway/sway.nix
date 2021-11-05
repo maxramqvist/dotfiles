@@ -67,7 +67,7 @@ in
           "Mod4+Shift+space" = "exec wofi --show run";
           "Mod4+Shift+e" = "exec wofi-emoji";
           "Mod4+Backspace" = "split toggle";
-          "Mod4+Escape" = "exec swaylock";
+          "Mod4+Escape" = "exec swaylock -C $HOME/dotfiles/sway/swaylock.config";
         };
 
         
@@ -83,7 +83,7 @@ in
         # Status bar: waybar
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 1800 'swaylock' timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "swayidle -w timeout 300 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
 
       # Probably replace output with Kanshi
