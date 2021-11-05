@@ -61,6 +61,7 @@ in
             v = "nvim";
             ip = "ip --color";
             ssh = "TERM=xterm-256color ssh";
+            swaylock = "swaylock -C $HOME/dotfiles/sway/swaylock.config";
           };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
