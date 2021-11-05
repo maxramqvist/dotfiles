@@ -12,7 +12,7 @@
     feh
     firefox
     git
-    go
+    go gcc
     jq
     lsof
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
