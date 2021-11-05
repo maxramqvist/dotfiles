@@ -24,12 +24,9 @@ cmp.setup({
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- shamelessly stolen from: https://github.com/notusknot/dotfiles-nix/blob/main/config/nvim/lua/lsp.lua
 
--- This file sets up autocompletion for neovim's native lsp
 
 -- This enables all the language servers I want on my system
--- Change these to whatever languages you use
 require'lspconfig'.rnix.setup{
   capabilities = capabilities
 }
@@ -64,8 +61,6 @@ end
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-
--- LUA below
 
 
 require'lspconfig'.sumneko_lua.setup {

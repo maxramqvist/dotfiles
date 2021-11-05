@@ -19,7 +19,7 @@ vim.cmd [[
   nnoremap <C-Up> :tabnew<CR>
   nnoremap <C-j> :tabprevious<CR>                                                                            
   nnoremap <C-k> :tabnext<CR>
-
+  set clipboard=unnamed,unnamedplus
 ]]
 -- Performance
 opt.lazyredraw = true
