@@ -10,6 +10,7 @@ in
       GTK_THEME = "Dracula";
     };
   };
+
   home-manager.users.max.programs = {
     mako = {
       enable = true;
@@ -66,7 +67,7 @@ in
           "Mod4+Shift+space" = "exec wofi --show run";
           "Mod4+Shift+e" = "exec wofi-emoji";
           "Mod4+Backspace" = "split toggle";
-
+          "Mod4+Escape" = "exec swaylock";
         };
 
         
@@ -82,13 +83,14 @@ in
         # Status bar: waybar
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 1800 'swaylock' timeout 1805 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "swayidle -w timeout 1800 'swaylock' timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
 
       # Probably replace output with Kanshi
       output = {
         # Set wallpaper
-        "*" = { bg = "/home/max/dotfiles/bg/jupiter-PIA23444.jpg fill #000000"; };
+        #"*" = { bg = "/home/max/dotfiles/bg/jupiter-PIA23444.jpg fill #000000"; };
+        "*" = { bg = "#000000 solid_color"; };
 
         # You can get the names of your outputs by running: swaymsg -t get_outputs
         eDP-1 = {
