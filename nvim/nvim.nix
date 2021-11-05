@@ -43,9 +43,8 @@ in
     vimdiffAlias = true;
     extraConfig = ''
       luafile $HOME/dotfiles/nvim/config.lua
-      luafile $HOME/dotfiles/nvim/lsp.lua
+      luafile $HOME/dotfiles/nvim/lsp_completion.lua
       luafile $HOME/dotfiles/nvim/telescope.lua
-      luafile $HOME/dotfiles/nvim/cmp.lua
       '';
     extraPackages = with pkgs; [
  
