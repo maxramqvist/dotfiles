@@ -4,13 +4,13 @@ let
 in
 {
   imports =
-  [
-    (import "${home-manager}/nixos")
-    ./alacritty/alacritty.nix
-    ./waybar/waybar.nix
-    ./sway/sway.nix
-    ./nvim/nvim.nix
-  ];
+    [
+      (import "${home-manager}/nixos")
+      ./alacritty/alacritty.nix
+      ./waybar/waybar.nix
+      ./sway/sway.nix
+      ./nvim/nvim.nix
+    ];
   # Home Manager
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
@@ -32,7 +32,7 @@ in
     programs = {
       git = {
         enable = true;
-        userName  = "maxramqvist";
+        userName = "maxramqvist";
         userEmail = "max.ramqvist@gmail.com";
       };
       starship = {
@@ -56,13 +56,13 @@ in
         enableCompletion = true;
         enableSyntaxHighlighting = true;
         shellAliases = {
-            tf = "terraform";
-            aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
-            v = "nvim";
-            ip = "ip --color";
-            ssh = "TERM=xterm-256color ssh";
-            swaylock = "swaylock -C $HOME/dotfiles/sway/swaylock.config";
-          };
+          tf = "terraform";
+          aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
+          v = "nvim";
+          ip = "ip --color";
+          ssh = "TERM=xterm-256color ssh";
+          swaylock = "swaylock -C $HOME/dotfiles/sway/swaylock.config";
+        };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
           unalias z 2> /dev/null
@@ -71,7 +71,7 @@ in
             cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "''${*##-* }" | sed 's/^[0-9,.]* *//')"
           }
           zstyle ':completion:*' menu select
-          '';
+        '';
         history = {
           size = 10000;
           ignoreDups = true;
@@ -80,8 +80,9 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          plugins = [ 
-            "git" "z"
+          plugins = [
+            "git"
+            "z"
           ];
         };
       };
@@ -89,6 +90,6 @@ in
         enable = true;
         enableZshIntegration = true;
       };
-    }; 
+    };
   };
 }

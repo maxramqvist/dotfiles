@@ -12,7 +12,8 @@
     feh
     firefox
     git
-    go gcc
+    go
+    gcc
     jq
     lsof
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
@@ -28,29 +29,34 @@
     vscode
     wget
     # work
-    nomad consul terraform azure-cli openssl
+    nomad
+    consul
+    terraform
+    azure-cli
+    openssl
     # zsh
     zsh
     zsh-z
     # pulseaudio + bluetooth
-    pavucontrol pulsemixer 
+    pavucontrol
+    pulsemixer
   ];
 
   virtualisation.docker = {
     enable = true;
   };
 
-#  services.netdata = {
-#    enable = true;
-#    config = {
-#      global = {
-#        "memory mode" = "dbengine";
-#        "debug log" = "none";
-#        "access log" = "none";
-#        "error log" = "syslog";
-#      };
-#    };
-#  };
+  #  services.netdata = {
+  #    enable = true;
+  #    config = {
+  #      global = {
+  #        "memory mode" = "dbengine";
+  #        "debug log" = "none";
+  #        "access log" = "none";
+  #        "error log" = "syslog";
+  #      };
+  #    };
+  #  };
   # virtualisation.podman = { # also add docker-compose replacement, some python script... google
   #   enable = true;
   #   dockerCompat = true;

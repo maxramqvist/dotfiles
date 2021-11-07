@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-    # Use the systemd-boot EFI boot loader.
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -11,7 +11,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Disable IPv6
-  boot.kernelParams = ["ipv6.disable=1"];
+  boot.kernelParams = [ "ipv6.disable=1" ];
   networking.enableIPv6 = false;
 
 
@@ -32,8 +32,9 @@
     ## DNS servers from DHCP are appended to the list after the defined DNS servers
     # resolvconf.enable = false; # Cannot enable because of some Nix conflict.
 
-     # resolvconf.dnsExtensionMechanism = false; # Doesn't remove the DHCP recieved DNS servers
-     nameservers = [ # We get these nameservers + whatever DHCP sets.
+    # resolvconf.dnsExtensionMechanism = false; # Doesn't remove the DHCP recieved DNS servers
+    nameservers = [
+      # We get these nameservers + whatever DHCP sets.
       "1.1.1.1"
       "9.9.9.9"
     ];
@@ -77,12 +78,12 @@
   # Disable Nvidia
   hardware.nvidiaOptimus.disable = lib.mkDefault true;
   boot.blacklistedKernelModules = lib.mkDefault [ "nouveau" "nvidia" ];
-  
+
   services.tlp.enable = true; # TLP’s default settings are already optimized for battery life and implement Powertop’s recommendations out of the box. So you may just install and forget it.
   # END Power management
 
   hardware.cpu.intel.updateMicrocode = true;
-  hardware.enableRedistributableFirmware = true; 
+  hardware.enableRedistributableFirmware = true;
   services.fwupd.enable = true;
 }
 

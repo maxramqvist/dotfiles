@@ -10,10 +10,10 @@
       ./home.nix
       ./set-and-forget.nix
       ./apps.nix
-     # ./x-wm-de.nix
+      # ./x-wm-de.nix
       ./wayland-wm-de.nix
     ];
-  
+
   # Fonts
   fonts = {
     fontDir.enable = true;
@@ -30,8 +30,8 @@
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      intel-media-driver
+      vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
     ];
@@ -48,39 +48,39 @@
   #   package = pkgs.pulseaudioFull; # Bluetooth codecs/headset support
   # };
 
-security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  media-session.config.bluez-monitor.rules = [
-    {
-      # Matches all cards
-      matches = [ { "device.name" = "~bluez_card.*"; } ];
-      actions = {
-        "update-props" = {
-          "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-          # mSBC is not expected to work on all headset + adapter combinations.
-          "bluez5.msbc-support" = true;
-          # SBC-XQ is not expected to work on all headset + adapter combinations.
-          "bluez5.sbc-xq-support" = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    media-session.config.bluez-monitor.rules = [
+      {
+        # Matches all cards
+        matches = [{ "device.name" = "~bluez_card.*"; }];
+        actions = {
+          "update-props" = {
+            "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+            # mSBC is not expected to work on all headset + adapter combinations.
+            "bluez5.msbc-support" = true;
+            # SBC-XQ is not expected to work on all headset + adapter combinations.
+            "bluez5.sbc-xq-support" = true;
+          };
         };
-      };
-    }
-    {
-      matches = [
-        # Matches all sources
-        { "node.name" = "~bluez_input.*"; }
-        # Matches all outputs
-        { "node.name" = "~bluez_output.*"; }
-      ];
-      actions = {
-        "node.pause-on-idle" = false;
-      };
-    }
-  ];
-};
+      }
+      {
+        matches = [
+          # Matches all sources
+          { "node.name" = "~bluez_input.*"; }
+          # Matches all outputs
+          { "node.name" = "~bluez_output.*"; }
+        ];
+        actions = {
+          "node.pause-on-idle" = false;
+        };
+      }
+    ];
+  };
 
 
   hardware.bluetooth = {
