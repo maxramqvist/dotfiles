@@ -56,7 +56,7 @@ require('github-theme').setup({
 -- status line
 require'lualine'.setup {
 options = {
-    theme = 'github',
+    --theme = 'auto',
   }
 }
 
