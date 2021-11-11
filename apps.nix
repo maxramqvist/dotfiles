@@ -3,6 +3,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    aliza
+    ansible_2_11
     chromium
     coreutils
     curl
@@ -18,7 +20,7 @@
     lsof
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
     nodejs-16_x
-    python310
+    python310 
     ripgrep
     slack
     spotify
@@ -45,26 +47,6 @@
   virtualisation.docker = {
     enable = true;
   };
-
-  #  services.netdata = {
-  #    enable = true;
-  #    config = {
-  #      global = {
-  #        "memory mode" = "dbengine";
-  #        "debug log" = "none";
-  #        "access log" = "none";
-  #        "error log" = "syslog";
-  #      };
-  #    };
-  #  };
-  # virtualisation.podman = { # also add docker-compose replacement, some python script... google
-  #   enable = true;
-  #   dockerCompat = true;
-  # };
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
 
 }
 
