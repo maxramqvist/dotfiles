@@ -20,10 +20,17 @@ vim.cmd [[
   nnoremap <C-j> :tabprevious<CR>                                                                            
   nnoremap <C-k> :tabnext<CR>
   set clipboard=unnamed,unnamedplus
+  autocmd BufWritePre *.nix lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 1000)
 ]]
 -- Performance
 opt.lazyredraw = true
 opt.updatetime = 300
+
 
 -- Indentation
 opt.smartindent = true

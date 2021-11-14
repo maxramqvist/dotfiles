@@ -1,15 +1,4 @@
-
 { config, lib, pkgs, vimUtils, ... }:
-
-/*
-Todo:
-  - [ ] goto definition
-  - [x] hur söka kod? <Leader>fg
-  - [x] autocomplete, både från lokala variabler och från libbar: nvim-cmp
-  - [ ] copy paste genom global clipboard
-  - [ ] tema
-*/
-
 let
   colorScheme = import ../color-schemes/campbell.nix;
 
@@ -25,10 +14,8 @@ let
 
   # always installs latest version
   plugin = pluginGit "HEAD";
-in 
-
+in
 {
-
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
@@ -45,30 +32,31 @@ in
       luafile $HOME/dotfiles/nvim/config.lua
       luafile $HOME/dotfiles/nvim/lsp_completion.lua
       luafile $HOME/dotfiles/nvim/telescope.lua
-      '';
+    '';
     extraPackages = with pkgs; [
- 
-     # Requirements for treesitter
-     gcc
-     fd
 
-     # extra language servers
-     sumneko-lua-language-server
-     terraform-lsp
-     nodePackages.typescript nodePackages.typescript-language-server
-     gopls
-     rnix-lsp # nix lsp server
-     python39
-     python39Packages.python-lsp-server
+      # Requirements for treesitter
+      gcc
+      fd
+
+      # extra language servers
+      sumneko-lua-language-server
+      terraform-lsp
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      gopls
+      rnix-lsp # nix lsp server
+      python39
+      python39Packages.python-lsp-server
     ];
     plugins = with pkgs.vimPlugins; [
 
       (plugin "nvim-treesitter/nvim-treesitter")
       (plugin "projekt0n/github-nvim-theme")
       # Tree-sitter with all grammars
-#      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-#        plugins: pkgs.tree-sitter.allGrammars)
-#        ) # improved syntax highlighting, all grammars installed the NixOS way
+      #      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+      #        plugins: pkgs.tree-sitter.allGrammars)
+      #        ) # improved syntax highlighting, all grammars installed the NixOS way
 
       # sane setup for language servers
       nvim-lspconfig
@@ -83,20 +71,20 @@ in
       cmp_luasnip
 
       # Language support
-      vim-terraform           # terraform ftw
-      vim-nix                 # vim syntax for nix ftw
-      vim-go                  # lets go!
+      vim-terraform # terraform ftw
+      vim-nix # vim syntax for nix ftw
+      vim-go # lets go!
 
       # find stuff
       telescope-nvim
       telescope-fzf-native-nvim
-      
+
       # Filebrowser
-      nerdtree                # tree explorer
-      nerdtree-git-plugin     # shows files git status on the NerdTree
-      
-      nvim-web-devicons     # icons for filebrowser, not sure how to enable in nerdtree
-      
+      nerdtree # tree explorer
+      nerdtree-git-plugin # shows files git status on the NerdTree
+
+      nvim-web-devicons # icons for filebrowser, not sure how to enable in nerdtree
+
       # status line
       lualine-nvim
     ];
