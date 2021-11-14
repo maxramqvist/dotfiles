@@ -19,6 +19,8 @@
       base = true; # not sure, but testing for screen sharing
     };
     extraPackages = with pkgs; [
+      pamixer
+      brightnessctl
       swaylock
       swayidle
       wl-clipboard
