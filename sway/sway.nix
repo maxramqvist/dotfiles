@@ -90,7 +90,7 @@ in
         # Status bar: waybar
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 300 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "swayidle -w timeout 600 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 1800 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
 
       # Probably replace output with Kanshi

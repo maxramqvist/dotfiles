@@ -1,6 +1,12 @@
 { config, lib, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  slackWithPipeWire = pkgs.makeDesktopItem {
+    name = "slack-pipewire";
+    desktopName = "Slack with Screen Sharing [Wayland]";
+    icon = "slack";
+    exec = "/run/current-system/sw/bin/slack --enable-features=WebRTCPipeWireCapturer";
+  };
 in
 {
   imports =
@@ -15,6 +21,9 @@ in
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.max = {
+    home.packages = [
+      slackWithPipeWire
+    ];
     gtk = {
       enable = true;
       iconTheme = {
