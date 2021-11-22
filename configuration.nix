@@ -40,14 +40,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio = {
-  #   enable = true;
-  #   extraModules = [ pkgs.pulseaudio-modules-bt ]; # Bluetooth codecs/headset support
-  #   package = pkgs.pulseaudioFull; # Bluetooth codecs/headset support
-  # };
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -102,12 +94,6 @@
   };
   security.sudo.wheelNeedsPassword = false;
   nixpkgs.config.allowUnfree = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
