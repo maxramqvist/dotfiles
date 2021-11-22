@@ -61,8 +61,7 @@
   boot.kernel.sysctl = {
     "vm.swappiness" = 1;
   };
-
-  services.fstrim.enable = true;
+  services.fstrim.enable = true; # trim unused blocks - supposed to prolong ssd life?
 
   services.logind.extraConfig = ''
     # don’t shutdown when power button is short-pressed
