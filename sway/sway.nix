@@ -3,14 +3,37 @@ let
   #colorScheme = import ../color-schemes/campbell.nix;
   colorScheme = import ../color-schemes/dracula.nix;
   #colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
+  increaseBrightness = pkgs.writeShellScriptBin "increaseBrightness" ''
+    number=$(brightnessctl get)
+    if [ "$number" -ge 0 ] && [ "$number" -le 1000 ]; then
+      brightnessctl s +200
+    elif [ "$number" -ge 1001 ] &&  [ "$number" -le 10000 ]; then
+      brightnessctl s +1000
+    elif [ "$number" -ge 10001 ] &&  [ "$number" -le $(brightnessctl max) ]; then
+      brightnessctl s +10%
+    fi
+  '';
+  decreaseBrightness = pkgs.writeShellScriptBin "decreaseBrightness" ''
+      number=$(brightnessctl get)
+    if [ "$number" -ge 0 ] && [ "$number" -le 1000 ]; then
+      brightnessctl s 200-
+    elif [ "$number" -ge 1001 ] &&  [ "$number" -le 10000 ]; then
+      brightnessctl s 1000-
+    elif [ "$number" -ge 10001 ] &&  [ "$number" -le $(brightnessctl max) ]; then
+      brightnessctl s 10%-
+    fi
+  '';
 in
 {
   home-manager.users.max.home = {
     sessionVariables = {
       GTK_THEME = "Dracula";
     };
+    packages = [
+      decreaseBrightness
+      increaseBrightness
+    ];
   };
-
   home-manager.users.max.programs = {
     mako = {
       enable = true;
@@ -64,8 +87,8 @@ in
       # Inherit defaults but add overrides to keybindings
       keybindings = lib.mkOptionDefault {
         # Brightness
-        "XF86MonBrightnessDown" = "exec brightnessctl set 2%-";
-        "XF86MonBrightnessUp" = "exec brightnessctl set +2%";
+        "XF86MonBrightnessDown" = "exec decreaseBrightness";
+        "XF86MonBrightnessUp" = "exec increaseBrightness";
         # Volume
         "XF86AudioRaiseVolume" = "exec pamixer -i 10";
         "XF86AudioLowerVolume" = "exec pamixer -d 10";
