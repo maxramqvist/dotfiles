@@ -18,6 +18,18 @@
   # Network
   programs.nm-applet.enable = true;
 
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+  };
+
   # Generate an immutable /etc/resolv.conf from the nameserver settings
   # above (otherwise DHCP overwrites it):
   environment.etc."resolv.conf" = with lib; with pkgs; {
