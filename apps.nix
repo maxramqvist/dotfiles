@@ -39,6 +39,7 @@ in
     vault
     vscode
     wget
+    webcamoid
     # work
     nomad
     consul
