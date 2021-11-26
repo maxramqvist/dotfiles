@@ -23,6 +23,7 @@ in
   home-manager.users.max = {
     home.packages = [
       slackWithPipeWire
+      pkgs.bat
     ];
     gtk = {
       enable = true;
@@ -71,6 +72,7 @@ in
           ip = "ip --color";
           ssh = "TERM=xterm-256color ssh";
           swaylock = "swaylock -C $HOME/dotfiles/sway/swaylock.config";
+          cat = "bat -p";
         };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
