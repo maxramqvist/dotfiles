@@ -1,12 +1,6 @@
 { config, lib, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  slackWithPipeWire = pkgs.makeDesktopItem {
-    name = "slack-pipewire";
-    desktopName = "Slack with Screen Sharing [Wayland]";
-    icon = "slack";
-    exec = "/run/current-system/sw/bin/slack --enable-features=WebRTCPipeWireCapturer";
-  };
 in
 {
   imports =
@@ -22,7 +16,6 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.users.max = {
     home.packages = [
-      slackWithPipeWire
       pkgs.bat
     ];
     gtk = {
@@ -72,7 +65,7 @@ in
           ip = "ip --color";
           ssh = "TERM=xterm-256color ssh";
           swaylock = "swaylock -C $HOME/dotfiles/sway/swaylock.config";
-          cat = "bat -p";
+          cat = "bat -pp";
         };
         initExtraBeforeCompInit = ''
           [ -f ~/zshrc ] && source ~/zshrc
