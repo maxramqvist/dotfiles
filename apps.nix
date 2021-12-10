@@ -46,6 +46,7 @@ in
     spotify
     teams
     tree
+    remmina
     unzip
     vault
     vscode
