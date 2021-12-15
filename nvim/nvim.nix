@@ -16,11 +16,11 @@ let
   plugin = pluginGit "HEAD";
 in
 {
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
+  #  nixpkgs.overlays = [
+  #    (import (builtins.fetchTarball {
+  #      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+  #    }))
+  #  ];
   home-manager.users.max.programs.neovim = {
     enable = true;
     viAlias = true;
