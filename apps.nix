@@ -33,6 +33,7 @@ in
     feh
     firefox
     git
+    gnumake
     go_1_17
     gcc
     jq
