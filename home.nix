@@ -17,6 +17,7 @@ in
   home-manager.users.max = {
     home.packages = [
       pkgs.bat
+      pkgs.kanshi
     ];
     gtk = {
       enable = true;
@@ -31,7 +32,35 @@ in
         size = 12;
       };
     };
-
+    services = {
+      kanshi = {
+        enable = true;
+        profiles = {
+          bara_laptop = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "enable";
+                position = "0,0";
+              }
+            ];
+          };
+          hemma = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "Unknown HP Z27n G2 6CM80602TX";
+                status = "enable";
+                position = "0,0";
+              }
+            ];
+          };
+        };
+      };
+    };
     programs = {
       git = {
         enable = true;
@@ -43,13 +72,10 @@ in
         enableZshIntegration = true;
         settings = {
           add_newline = false;
-
           character = {
             success_symbol = "[➜](bold green)";
             error_symbol = "[➜](bold red)";
           };
-
-          #package.disabled = true;
         };
       };
       zsh = {
