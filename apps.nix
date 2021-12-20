@@ -43,6 +43,7 @@ in
     nodejs-16_x
     python310
     ripgrep
+    shellcheck
     sshfs
     slack
     spotify
