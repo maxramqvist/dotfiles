@@ -16,11 +16,6 @@ let
   plugin = pluginGit "HEAD";
 in
 {
-  #  nixpkgs.overlays = [
-  #    (import (builtins.fetchTarball {
-  #      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-  #    }))
-  #  ];
   home-manager.users.max.programs.neovim = {
     enable = true;
     viAlias = true;
@@ -29,9 +24,9 @@ in
     withPython3 = true;
     vimdiffAlias = true;
     extraConfig = ''
-      luafile $HOME/dotfiles/nvim/config.lua
-      luafile $HOME/dotfiles/nvim/lsp_completion.lua
-      luafile $HOME/dotfiles/nvim/telescope.lua
+            luafile $HOME/dotfiles/nvim/config.lua
+            luafile $HOME/dotfiles/nvim/lsp_completion.lua
+            luafile $HOME/dotfiles/nvim/telescope.lua
     '';
     extraPackages = with pkgs; [
 

@@ -26,6 +26,7 @@ vim.cmd [[
   autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
   autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
   autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 1000)
+  autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 ]]
 -- Performance
 opt.lazyredraw = true
@@ -63,7 +64,7 @@ require('github-theme').setup({
 -- status line
 require'lualine'.setup {
 options = {
-    --theme = 'auto',
+    theme = 'auto',
   }
 }
 
