@@ -33,7 +33,7 @@ in
     feh
     firefox
     git
-    go
+    go_1_17
     gcc
     jq
     lsof
