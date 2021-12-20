@@ -38,8 +38,9 @@ in
     mako = {
       enable = true;
       anchor = "bottom-right";
-      backgroundColor = "#${colorScheme.background}";
-      borderColor = "#${colorScheme.foreground}";
+      backgroundColor = "#00000000";
+      borderColor = "#4C7899FF";
+      textColor = "#FFFFFFFF";
       borderRadius = 0;
       borderSize = 1;
       defaultTimeout = 20000; # ms. 0 = no timeout, keep until acknowledged
