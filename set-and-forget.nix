@@ -39,7 +39,7 @@
     '';
   };
   networking = {
-
+    hostName = "9310";
     ## Trying to set the defined DNS servers as the ONLY DNS servers, but with the config below the
     ## DNS servers from DHCP are appended to the list after the defined DNS servers
     # resolvconf.enable = false; # Cannot enable because of some Nix conflict.
@@ -52,9 +52,6 @@
     ];
 
 
-    hostName = "3560"; # Define your hostname.
-    interfaces.enp0s31f6.useDHCP = true;
-    interfaces.wlp0s20f3.useDHCP = true;
     networkmanager = {
       enable = true;
       dns = "none"; # no effect, resolvconf still generates /etc/resolv.conf
@@ -86,9 +83,6 @@
     powertop.enable = true;
   };
 
-  # Disable Nvidia
-  hardware.nvidiaOptimus.disable = lib.mkDefault true;
-  boot.blacklistedKernelModules = lib.mkDefault [ "nouveau" "nvidia" ];
 
   services.tlp.enable = true; # TLP’s default settings are already optimized for battery life and implement Powertop’s recommendations out of the box. So you may just install and forget it.
   # END Power management
