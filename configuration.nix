@@ -11,8 +11,11 @@
       ./set-and-forget.nix
       ./apps.nix
       ./wayland-wm-de.nix
+      ./9310.nix
     ];
-system.stateVersion = "21.11"; 
+
+  system.stateVersion = "21.11"; # You know.
+
   # Fonts
   fonts = {
     fontDir.enable = true;
@@ -37,9 +40,14 @@ system.stateVersion = "21.11";
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = false;
+  # services.printing.enable = false;
 
   security.rtkit.enable = true;
+
+  # Using pipewire for screen sharing on chromium apps (Slack, VSCode) and bluetooth.
+  # START Bluetooth headset stuff
+  # ...stuff that might be needed for best possible bluetooth headset (AirPods Pro) support on 
+  # Linux. Which is pretty poor. At best good audio, terrible mic.
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -73,7 +81,6 @@ system.stateVersion = "21.11";
     ];
   };
 
-
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluezFull; # Not sure about this one.
@@ -83,7 +90,8 @@ system.stateVersion = "21.11";
       };
     };
   };
-  services.blueman.enable = true; # manage bluetooth devices from CLI https://nixos.wiki/wiki/Bluetooth
+  services.blueman.enable = true; # manage bluetooth devices from CLI https://nixos.wiki/wiki/Bluetooth 
+  # STOP Bluetooth headset stuff
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.max = {

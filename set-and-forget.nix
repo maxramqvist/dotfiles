@@ -62,7 +62,10 @@
   time.timeZone = "Europe/Stockholm";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz"; # High DPI Displays.
+    packages = with pkgs; [ terminus_font ];
+    # font = "Lat2-Terminus16"; # Low DPI displays (up to Full HD)
     keyMap = "sv-latin1";
   };
 
