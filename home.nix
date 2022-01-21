@@ -76,7 +76,7 @@ in
             outputs = [
               {
                 criteria = "eDP-1";
-                status = "enable";
+                status = "disable";
               }
               {
                 criteria = "Unknown HP Z27n G2 6CM80602TX";
