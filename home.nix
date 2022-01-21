@@ -76,7 +76,7 @@ in
             outputs = [
               {
                 criteria = "eDP-1";
-                status = "disable";
+                status = "enable";
               }
               {
                 criteria = "Unknown HP Z27n G2 6CM80602TX";
@@ -114,6 +114,7 @@ in
         shellAliases = {
           tf = "terraform";
           aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
+          awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/run";
           v = "nvim";
           ip = "ip --color";
           ssh = "TERM=xterm-256color ssh";

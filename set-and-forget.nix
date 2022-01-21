@@ -16,7 +16,7 @@
 
 
   # Network
-  programs.nm-applet.enable = true;
+  programs.nm-applet.enable = true; # the little network chooser icon in tray
 
   nix = {
     gc = {

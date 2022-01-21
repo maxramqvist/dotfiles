@@ -37,7 +37,9 @@ in
     go_1_17
     gcc
     jq
+    yq
     lsof
+    lua5_1
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
     minio-client
     nodejs-16_x
