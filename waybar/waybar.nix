@@ -15,11 +15,17 @@
         # Choose the order of the modules
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "pulseaudio" "custom/emoji-picker" "battery" "network" "clock" "tray" "custom/power"];
-          modules = {
+        modules-right = [
+          "network"
+          "pulseaudio"
+          "battery"
+          "tray"
+          "clock"
+        ];
+        modules = {
           "sway/workspaces" = {
             disable-scroll = true;
-            disable-markup  = false;
+            disable-markup = false;
             all-outputs = false;
             format = "  {icon}  ";
             format-icons = {
@@ -38,7 +44,7 @@
             };
           };
           "tray" = {
-            icon-size = 18;
+            icon-size = 24;
             spacing = 8;
           };
           "clock" = {
@@ -62,33 +68,33 @@
               warning = 30;
               critical = 15;
             };
-            format = "{capacity}% {icon}";
-            # "format-good" = ""; # An empty format will hide the module
+            format = "{icon} {capacity}%";
+            "#format-good" = ""; # An empty format will hide the module
             # "format-full" = "";
             format-icons = [ "" "" "" "" "" ];
           };
           "network" = {
-            # "interface" = "wlp2s0"; # (Optional) To force the use of this interface
-            "format-wifi" = "{essid} ({signalStrength}%) ";
-            "format-ethernet" = "{ifname} = {ipaddr}/{cidr} ";
+            "format-wifi" = " {essid} {signalStrength}%";
+            "format-ethernet" = "  {bandwidthUpBits} {bandwidthDownBits}";
+
             "format-disconnected" = "Disconnected ⚠";
-            "interval" = 7;
+            "interval" = 2;
           };
 
-        #   "bluetooth" = {
-        #     format = "<b>{icon}</b>";
-        #     format-alt = "{status} {icon}";
-        #     interval = 30;
-        #     format-icons = {
-        #       "enabled" = "";
-        #       "disabled" = "";
-        #     };
-        #     tooltip-format = "{}";
-        #   };
+          "bluetooth" = {
+            format = "<b>{icon}</b>";
+            format-alt = "{status} {icon}";
+            interval = 30;
+            format-icons = {
+              "enabled" = "";
+              "disabled" = "";
+            };
+            tooltip-format = "{}";
+          };
 
           "pulseaudio" = {
             #"scroll-step" = 1;
-            "format" = "{volume}% {icon}";
+            "format" = "{icon} {volume}%";
             "format-bluetooth" = "{volume}% {icon}";
             "format-muted" = "";
             "format-icons" = {
@@ -98,13 +104,9 @@
               "phone" = "";
               "portable" = "";
               "car" = "";
-              "default" = ["" ""];
+              "default" = [ "" "" ];
             };
             "on-click" = "pavucontrol";
-          };
-          "custom/power" = {
-            format = "";
-            on-click = "swaynag --border-bottom-size=3 --message-padding=8 --button-border-size=5 --button-padding=8 --background=#b0a7b8 --border-bottom=#8c78a5 --button-border=#8c78a5 --button-background=#deceed -f Roboto -t warning -m 'Power Menu Options' -b '⏻︁ Power off'  'shutdown -P now' -b '↻︁ Restart' 'shutdown -r now' -b '🛌︁ Hibernate' 'systemctl hibernate' -b '🛌︁ Hybrid-sleep' 'systemctl hybrid-sleep' -b '🛌︁ Suspend' 'systemctl suspend' -b '︁ Logout' 'swaymsg exit' -b ' Lock' 'swaylock-fancy -f Roboto'";
           };
           "custom/emoji-picker" = {
             "format" = "👾";
@@ -117,3 +119,4 @@
     ];
   };
 }
+
