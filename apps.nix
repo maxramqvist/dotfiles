@@ -14,7 +14,7 @@ let
         --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
     '';
   });
-    teams = pkgs.teams.overrideAttrs (old: {
+  teams = pkgs.teams.overrideAttrs (old: {
     installPhase = old.installPhase + ''
       rm $out/bin/teams
 
@@ -45,6 +45,7 @@ in
     git
     gnumake
     go_1_17
+    gotop
     gcc
     jq
     yq
