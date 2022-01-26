@@ -72,6 +72,19 @@ in
               }
             ];
           };
+          jobbet = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "Unknown HP Z27n G2 6CM8060FV2";
+                status = "enable";
+                position = "0,0";
+              }
+            ];
+          };
           hemma = {
             outputs = [
               {
