@@ -54,16 +54,9 @@ in
     package = pkgs.sway;
     systemdIntegration = true;
     wrapperFeatures.gtk = true;
-    extraSessionCommands =
-      ''
-        export EDITOR=nvim
-        export MOZ_ENABLE_WAYLAND=1
-        export WLR_DRM_NO_MODIFIERS=1
-        export SDL_VIDEODRIVER=wayland
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export _JAVA_AWT_WM_NONREPARENTING=1
-      '';
+    extraConfig = ''
+      include /etc/sway/config.d/*
+    '';
     config = {
       terminal = "alacritty";
       input = {
@@ -93,7 +86,7 @@ in
         # Volume
         "XF86AudioRaiseVolume" = "exec pamixer -i 10";
         "XF86AudioLowerVolume" = "exec pamixer -d 10";
-        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioMute" = "exec pamixer -m";
         "Mod4+space" = "exec wofi --show drun --allow-images";
         "Mod4+Shift+space" = "exec wofi --show run";
         "Mod4+Shift+e" = "exec wofi-emoji";
@@ -116,22 +109,10 @@ in
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
         { command = "swayidle -w timeout 600 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 1800 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
-
-      # Probably replace output with Kanshi
       output = {
         # Set wallpaper
         #"*" = { bg = "/home/max/dotfiles/bg/jupiter-PIA23444.jpg fill #000000"; };
         "*" = { bg = "#000000 solid_color"; };
-
-        # You can get the names of your outputs by running: swaymsg -t get_outputs
-        eDP-1 = {
-          resolution = "1920x1080";
-          position = "0,0";
-        };
-        HDMI-A-1 = {
-          resolution = "2560x1440";
-          position = "1920,0";
-        };
       };
     };
   };
