@@ -5,21 +5,21 @@ let
   #colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
   increaseBrightness = pkgs.writeShellScriptBin "increaseBrightness" ''
     number=$(brightnessctl get)
-    if [ "$number" -ge 0 ] && [ "$number" -le 1000 ]; then
-      brightnessctl s +200
-    elif [ "$number" -ge 1001 ] &&  [ "$number" -le 10000 ]; then
-      brightnessctl s +1000
-    elif [ "$number" -ge 10001 ] &&  [ "$number" -le $(brightnessctl max) ]; then
+    if [ "$number" -ge 0 ] && [ "$number" -le 50 ]; then
+      brightnessctl s +1%
+    elif [ "$number" -ge 51 ] &&  [ "$number" -le 100 ]; then
+      brightnessctl s +5%
+    elif [ "$number" -ge 101 ] &&  [ "$number" -le $(brightnessctl max) ]; then
       brightnessctl s +10%
     fi
   '';
   decreaseBrightness = pkgs.writeShellScriptBin "decreaseBrightness" ''
       number=$(brightnessctl get)
-    if [ "$number" -ge 0 ] && [ "$number" -le 1000 ]; then
-      brightnessctl s 200-
-    elif [ "$number" -ge 1001 ] &&  [ "$number" -le 10000 ]; then
-      brightnessctl s 1000-
-    elif [ "$number" -ge 10001 ] &&  [ "$number" -le $(brightnessctl max) ]; then
+    if [ "$number" -ge 0 ] && [ "$number" -le 51 ]; then
+      brightnessctl s 1%-
+    elif [ "$number" -ge 51 ] &&  [ "$number" -le 101 ]; then
+      brightnessctl s 5%-
+    elif [ "$number" -ge 101 ] &&  [ "$number" -le $(brightnessctl max) ]; then
       brightnessctl s 10%-
     fi
   '';
@@ -86,7 +86,7 @@ in
         # Volume
         "XF86AudioRaiseVolume" = "exec pamixer -i 10";
         "XF86AudioLowerVolume" = "exec pamixer -d 10";
-        "XF86AudioMute" = "exec pamixer -m";
+        "XF86AudioMute" = ''exec [[ $(pamixer --get-mute) == "true" ]] && pamixer -u || pamixer -m'';
         "Mod4+space" = "exec wofi --show drun --allow-images";
         "Mod4+Shift+space" = "exec wofi --show run";
         "Mod4+Shift+e" = "exec wofi-emoji";

@@ -64,6 +64,7 @@ in
     tree
     remmina
     unzip
+    unrar
     vault
     vscode
     wget
