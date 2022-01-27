@@ -32,6 +32,9 @@ in
     packages = [
       decreaseBrightness
       increaseBrightness
+      pkgs.sway-contrib.grimshot
+      pkgs.sway-contrib.inactive-windows-transparency
+      pkgs.swaylock-fancy
     ];
   };
   home-manager.users.max.programs = {
@@ -92,6 +95,9 @@ in
         "Mod4+Shift+e" = "exec wofi-emoji";
         "Mod4+Backspace" = "split toggle";
         "Mod4+Escape" = "exec swaylock -C $HOME/dotfiles/sway/swaylock.config";
+        "Print" = "exec grimshot copy area";
+        "Control+Print" = "exec grimshot copy screen";
+        "Alt+Print" = "exec grimshot save screen";
       };
 
 
@@ -108,6 +114,7 @@ in
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
         { command = "swayidle -w timeout 600 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 1800 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "inactive-windows-transparency.py --opacity 0.8"; }
       ];
       output = {
         # Set wallpaper
