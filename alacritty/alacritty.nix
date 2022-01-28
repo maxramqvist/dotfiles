@@ -4,7 +4,8 @@ let
   #colorScheme = import ../color-schemes/campbell.nix;
   #colorScheme = import ../color-schemes/dracula.nix;
   colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
-in {
+in
+{
   home-manager.users.max.programs = {
     alacritty = {
       enable = true;
@@ -23,7 +24,9 @@ in {
             action = "ClearSelection";
           }
         ];
-        background_opacity = 1;
+        window = {
+          opacity = 1;
+        };
         bell = {
           animation = "EaseOutExpo";
           duration = 10;
