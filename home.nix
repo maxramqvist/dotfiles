@@ -35,27 +35,27 @@ in
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/chrome" = "firefox.desktop";
-        "text/html" = "firefox.desktop";
-        "application/x-extension-htm" = "firefox.desktop";
-        "application/x-extension-html" = "firefox.desktop";
-        "application/x-extension-shtml" = "firefox.desktop";
-        "application/xhtml+xml" = "firefox.desktop";
-        "application/x-extension-xhtml" = "firefox.desktop";
-        "application/x-extension-xht" = "firefox.desktop";
+        "x-scheme-handler/https" = "chromium.desktop";
+        "x-scheme-handler/chrome" = "chromium.desktop";
+        "text/html" = "chromium.desktop";
+        "application/x-extension-htm" = "chromium.desktop";
+        "application/x-extension-html" = "chromium.desktop";
+        "application/x-extension-shtml" = "chromium.desktop";
+        "application/xhtml+xml" = "chromium.desktop";
+        "application/x-extension-xhtml" = "chromium.desktop";
+        "application/x-extension-xht" = "chromium.desktop";
         "x-scheme-handler/msteams" = "teams.desktop";
       };
       associations.added = {
-        "x-scheme-handler/https" = "firefox.desktop";
-        "x-scheme-handler/chrome" = "firefox.desktop";
-        "text/html" = "firefox.desktop";
-        "application/x-extension-htm" = "firefox.desktop";
-        "application/x-extension-html" = "firefox.desktop";
-        "application/x-extension-shtml" = "firefox.desktop";
-        "application/xhtml+xml" = "firefox.desktop";
-        "application/x-extension-xhtml" = "firefox.desktop";
-        "application/x-extension-xht" = "firefox.desktop";
+        "x-scheme-handler/https" = "chromium.desktop";
+        "x-scheme-handler/chrome" = "chromium.desktop";
+        "text/html" = "chromium.desktop";
+        "application/x-extension-htm" = "chromium.desktop";
+        "application/x-extension-html" = "chromium.desktop";
+        "application/x-extension-shtml" = "chromium.desktop";
+        "application/xhtml+xml" = "chromium.desktop";
+        "application/x-extension-xhtml" = "chromium.desktop";
+        "application/x-extension-xht" = "chromium.desktop";
       };
 
     };
@@ -102,6 +102,51 @@ in
       };
     };
     programs = {
+      chromium = {
+        enable = true;
+        commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
+        extensions = [
+          #         { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
+        ];
+      };
+      foot = {
+        enable = true;
+        server = {
+          enable = true;
+        };
+        settings = {
+          main = {
+            font = "UbuntuMono Nerd Font:size=14";
+            dpi-aware = "yes";
+          };
+          cursor = {
+            color = "eeeeee 9f515a";
+          };
+          colors = {
+            foreground = "dbdee9";
+            background = "0e1420";
+            regular0 = "5b6272";
+            regular1 = "bf616a";
+            regular2 = "a3be8c";
+            regular3 = "ebcb8b";
+            regular4 = "81a1c1";
+            regular5 = "b48ead";
+            regular6 = "88c0d0";
+            regular7 = "e5e9f0";
+            bright0 = "4c566a";
+            bright1 = "bf616a";
+            bright2 = "a3be8c";
+            bright3 = "ebcb8b";
+            bright4 = "81a1c1";
+            bright5 = "b48ead";
+            bright6 = "8fbcbb";
+            bright7 = "eceff4";
+          };
+          mouse = {
+            hide-when-typing = "yes";
+          };
+        };
+      };
       git = {
         enable = true;
         userName = "maxramqvist";
