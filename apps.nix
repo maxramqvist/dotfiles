@@ -54,28 +54,28 @@ in
     lsof
     lua5_1
     mpv # Add mpv config to nix config: https://nixos.wiki/wiki/Accelerated_Video_Playback
-    minio-client
     nodejs-16_x
     python310
     ripgrep
     shellcheck
-    sshfs
     slack
     spotify
     teams
     tree
-    remmina
     unzip
     unrar
     vault
     vscode
     wget
-    webcamoid
+    ## webcamoid
     # work
     nomad
+    minio-client
+    remmina
     consul
     terraform
     azure-cli
+    azuredatastudio
     openssl
     # zsh
     zsh

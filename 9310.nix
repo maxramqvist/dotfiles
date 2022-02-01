@@ -30,4 +30,5 @@
 
   networking.interfaces.wlp113s0.useDHCP = true;
 
+  networking.wireguard.enable = true;
 }
