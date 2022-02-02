@@ -69,9 +69,10 @@
               critical = 15;
             };
             format = "{icon} {capacity}%";
-            "#format-good" = ""; # An empty format will hide the module
-            # "format-full" = "";
             format-icons = [ "" "" "" "" "" ];
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            format-discharging = "{capacity}%🔋";
           };
           "network" = {
             "format-wifi" = " {essid} {signalStrength}%";
