@@ -25,6 +25,10 @@ let
   '';
 in
 {
+  # fix pam.d screen locking issue mentioned here:
+  # - https://github.com/NixOS/nixpkgs/issues/143365
+  # - fix merged into staging-next: https://github.com/NixOS/nixpkgs/pull/156974
+  # security.pam.services.swaylock = { }; # doesnt fix issue
   home-manager.users.max.home = {
     sessionVariables = {
       GTK_THEME = "Dracula";
@@ -112,7 +116,7 @@ in
         # Status bar: waybar
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 600 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 1800 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "swayidle -w timeout 300 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 600 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
       output = {
         # Set wallpaper
