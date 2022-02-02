@@ -106,7 +106,8 @@ in
         enable = true;
         commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
         extensions = [
-          #         { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
+          { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
+          { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
         ];
       };
       foot = {
