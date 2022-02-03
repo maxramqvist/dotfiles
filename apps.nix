@@ -42,7 +42,6 @@ in
     docker-compose
     dracula-theme
     feh
-    firefox
     git
     gnumake
     go_1_17
