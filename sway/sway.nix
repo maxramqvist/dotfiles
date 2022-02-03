@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  #colorScheme = import ../color-schemes/campbell.nix;
   colorScheme = import ../color-schemes/dracula.nix;
-  #colorScheme = import ../color-schemes/github_default_dark.nix; # https://github.com/projekt0n/github-nvim-theme/blob/main/extras/alacritty/dark_default.yml
   increaseBrightness = pkgs.writeShellScriptBin "increaseBrightness" ''
     number=$(brightnessctl get)
     if [ "$number" -ge 0 ] && [ "$number" -le 50 ]; then
@@ -25,10 +23,6 @@ let
   '';
 in
 {
-  # fix pam.d screen locking issue mentioned here:
-  # - https://github.com/NixOS/nixpkgs/issues/143365
-  # - fix merged into staging-next: https://github.com/NixOS/nixpkgs/pull/156974
-  # security.pam.services.swaylock = { }; # doesnt fix issue
   home-manager.users.max.home = {
     sessionVariables = {
       GTK_THEME = "Dracula";
@@ -62,6 +56,8 @@ in
     wrapperFeatures.gtk = true;
     extraConfig = ''
       include /etc/sway/config.d/*
+      for_window [class="^.*"] inhibit_idle fullscreen
+      for_window [app_id="^.*"] inhibit_idle fullscreen
     '';
     config = {
       terminal = "alacritty";
@@ -82,14 +78,10 @@ in
         style = "Regular";
         size = 12.0;
       };
-      #  inhibit_idle = "fullscreen"; # inhibits swayidle (playing video or similar) when running fullscreen apps
       modifier = "Mod4";
-      # Inherit defaults but add overrides to keybindings
       keybindings = lib.mkOptionDefault {
-        # Brightness
         "XF86MonBrightnessDown" = "exec decreaseBrightness";
         "XF86MonBrightnessUp" = "exec increaseBrightness";
-        # Volume
         "XF86AudioRaiseVolume" = "exec pamixer -i 10";
         "XF86AudioLowerVolume" = "exec pamixer -d 10";
         "XF86AudioMute" = ''exec [[ $(pamixer --get-mute) == "true" ]] && pamixer -u || pamixer -m'';
@@ -113,10 +105,9 @@ in
       colors.placeholder = { border = "#282A36"; background = "#282A36"; text = "#F8F8F2"; indicator = "#282A36"; childBorder = "#282A36"; };
       bars = [ ];
       startup = [
-        # Status bar: waybar
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 300 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 600 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        { command = "swayidle -w timeout 900 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 900 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
       ];
       output = {
         # Set wallpaper

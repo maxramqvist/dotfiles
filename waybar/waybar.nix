@@ -11,8 +11,6 @@
         layer = "top"; # Waybar at top layer
         position = "bottom"; # Waybar position (top|bottom|left|right)
         height = 25; # Waybar height
-        # "width" = 48; # Waybar width
-        # Choose the order of the modules
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
         modules-right = [
@@ -52,16 +50,6 @@
             format-alt = "{:%Y-%m-%d %H:%M} ";
             format = "{:%H:%M} ";
           };
-          # "cpu" = {
-          #   format = "{usage}%  CPU";
-          # };
-          # "memory" = {
-          #   format = "{}% ";
-          # };
-          # "disk" = {
-          #   format = "{}% ";
-          #   tooltip-format = "{used} / {total} used";
-          # };
           "battery" = {
             states = {
               good = 95;
@@ -94,7 +82,6 @@
           };
 
           "pulseaudio" = {
-            #"scroll-step" = 1;
             "format" = "{icon} {volume}%";
             "format-bluetooth" = "{volume}% {icon}";
             "format-muted" = "";
