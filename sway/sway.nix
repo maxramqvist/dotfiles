@@ -58,6 +58,9 @@ in
       include /etc/sway/config.d/*
       for_window [class="^.*"] inhibit_idle fullscreen
       for_window [app_id="^.*"] inhibit_idle fullscreen
+      set $laptop eDP-1
+      bindswitch --reload --locked lid:on output $laptop disable
+      bindswitch --reload --locked lid:off output $laptop enable
     '';
     config = {
       terminal = "alacritty";
@@ -88,6 +91,7 @@ in
         "Mod4+space" = "exec wofi --show drun --allow-images";
         "Mod4+Shift+space" = "exec wofi --show run";
         "Mod4+Shift+e" = "exec wofi-emoji";
+        "Mod4+d" = "exec wofi --show drun --allow-images";
         "Mod4+Backspace" = "split toggle";
         "Mod4+Escape" = "exec swaylock -C $HOME/dotfiles/sway/swaylock.config";
         "Print" = "exec grimshot copy area";
@@ -108,6 +112,7 @@ in
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
         { command = "swayidle -w timeout 900 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 900 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        # { command = "if grep -q open /proc/acpi/button/lid/LID0/state; then echo 'Locket öppet..'; else echo 'Locket stängt'; fi"; }
       ];
       output = {
         # Set wallpaper

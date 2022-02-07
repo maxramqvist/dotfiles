@@ -35,27 +35,27 @@ in
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "x-scheme-handler/https" = "chromium.desktop";
-        "x-scheme-handler/chrome" = "chromium.desktop";
-        "text/html" = "chromium.desktop";
-        "application/x-extension-htm" = "chromium.desktop";
-        "application/x-extension-html" = "chromium.desktop";
-        "application/x-extension-shtml" = "chromium.desktop";
-        "application/xhtml+xml" = "chromium.desktop";
-        "application/x-extension-xhtml" = "chromium.desktop";
-        "application/x-extension-xht" = "chromium.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "text/html" = "firefox.desktop";
+        "application/x-extension-htm" = "firefox.desktop";
+        "application/x-extension-html" = "firefox.desktop";
+        "application/x-extension-shtml" = "firefox.desktop";
+        "application/xhtml+xml" = "firefox.desktop";
+        "application/x-extension-xhtml" = "firefox.desktop";
+        "application/x-extension-xht" = "firefox.desktop";
         "x-scheme-handler/msteams" = "teams.desktop";
       };
       associations.added = {
-        "x-scheme-handler/https" = "chromium.desktop";
-        "x-scheme-handler/chrome" = "chromium.desktop";
-        "text/html" = "chromium.desktop";
-        "application/x-extension-htm" = "chromium.desktop";
-        "application/x-extension-html" = "chromium.desktop";
-        "application/x-extension-shtml" = "chromium.desktop";
-        "application/xhtml+xml" = "chromium.desktop";
-        "application/x-extension-xhtml" = "chromium.desktop";
-        "application/x-extension-xht" = "chromium.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "text/html" = "firefox.desktop";
+        "application/x-extension-htm" = "firefox.desktop";
+        "application/x-extension-html" = "firefox.desktop";
+        "application/x-extension-shtml" = "firefox.desktop";
+        "application/xhtml+xml" = "firefox.desktop";
+        "application/x-extension-xhtml" = "firefox.desktop";
+        "application/x-extension-xht" = "firefox.desktop";
       };
 
     };
@@ -82,6 +82,7 @@ in
                 criteria = "Unknown HP Z27n G2 6CM8060FV2";
                 status = "enable";
                 position = "0,0";
+                mode = "2560x1440@74.971Hz";
               }
             ];
           };
@@ -95,6 +96,7 @@ in
                 criteria = "Unknown HP Z27n G2 6CM80602TX";
                 status = "enable";
                 position = "0,0";
+                mode = "2560x1440@74.971Hz";
               }
             ];
           };
