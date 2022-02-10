@@ -42,6 +42,7 @@ in
     docker-compose
     dracula-theme
     feh
+    fontpreview
     git
     gnumake
     go_1_17
