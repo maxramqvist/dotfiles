@@ -1,11 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  # Use the systemd-boot EFI boot loader.
-  #  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # # Try to remove tearing - didnt work:
-  # boot.kernelParams = [ "i915.enable_psr=0" ]; 
 
   # Use latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -32,12 +27,13 @@
 
   # Generate an immutable /etc/resolv.conf from the nameserver settings
   # above (otherwise DHCP overwrites it):
-  environment.etc."resolv.conf" = with lib; with pkgs; {
-    source = writeText "resolv.conf" ''
-      ${concatStringsSep "\n" (map (ns: "nameserver ${ns}") config.networking.nameservers)}
-      options edns0
-    '';
-  };
+  # environment.etc."resolv.conf" = with lib; with pkgs; {
+  #   source = writeText "resolv.conf" ''
+  #     ${concatStringsSep "\n" (map (ns: "nameserver ${ns}") config.networking.nameservers)}
+  #     options edns0
+  #   '';
+  # };
+
   networking = {
     hostName = "9310";
     ## Trying to set the defined DNS servers as the ONLY DNS servers, but with the config below the
@@ -45,16 +41,15 @@
     # resolvconf.enable = false; # Cannot enable because of some Nix conflict.
 
     # resolvconf.dnsExtensionMechanism = false; # Doesn't remove the DHCP recieved DNS servers
-    nameservers = [
-      # We get these nameservers + whatever DHCP sets.
-      "1.1.1.1"
-      "9.9.9.9"
-    ];
+    # nameservers = [
+    #   # We get these nameservers + whatever DHCP sets.
+    #   "1.1.1.1"
+    #   "9.9.9.9"
+    # ];
 
 
     networkmanager = {
       enable = true;
-      dns = "none"; # no effect, resolvconf still generates /etc/resolv.conf
     };
   };
 
