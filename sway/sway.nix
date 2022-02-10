@@ -51,7 +51,6 @@ in
   };
   home-manager.users.max.wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.sway;
     systemdIntegration = true;
     wrapperFeatures.gtk = true;
     extraConfig = ''
