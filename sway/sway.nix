@@ -76,7 +76,7 @@ in
         };
       };
       fonts = {
-        names = [ "SauceCodePro Nerd Font Mono" ];
+        names = [ "Roboto Nerd Font Mono" ];
         style = "Regular";
         size = 12.0;
       };
