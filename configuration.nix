@@ -41,6 +41,7 @@
 
   services.printing = {
     enable = true;
+    drivers = [ pkgs.cups-toshiba-estudio ];
     browsing = true;
     browsedConf = ''
       BrowseDNSSDSubTypes _cups,_print

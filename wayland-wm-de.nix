@@ -11,6 +11,8 @@
       xdg-desktop-portal-wlr
     ];
   };
+  # Enable and remove some unused stuff when Electron+Wayland isn't broken anymore...
+  #  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] && \
     export EDITOR=nvim && \
