@@ -17,6 +17,7 @@ in
   home-manager.users.max = {
     home.packages = [
       pkgs.bat
+      pkgs.lsd
       pkgs.kanshi
     ];
     gtk = {
@@ -276,6 +277,8 @@ in
         enableCompletion = true;
         enableSyntaxHighlighting = true;
         shellAliases = {
+          ll = "lsd -l --group-dirs first";
+          tree = "lsd --tree";
           tf = "terraform";
           aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
           awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/run";
