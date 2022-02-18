@@ -29,7 +29,7 @@ in
         name = "Dracula";
       };
       font = {
-        name = "UbuntuMono Nerd Font";
+        name = "BlexMono Nerd Font Mono";
         size = 12;
       };
     };
@@ -84,6 +84,21 @@ in
                 status = "enable";
                 position = "0,0";
                 mode = "2560x1440@74.971Hz";
+              }
+            ];
+          };
+          jobbet2 = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "DP-3";
+                status = "enable";
+                position = "0,0";
+                mode = "3840x2160@60.000Hz";
+                scale = 2.0;
               }
             ];
           };
@@ -260,7 +275,7 @@ in
         userEmail = "max.ramqvist@gmail.com";
       };
       starship = {
-        enable = true;
+        enable = false;
         enableZshIntegration = true;
         settings = {
           add_newline = false;
@@ -309,6 +324,7 @@ in
             "git"
             "z"
           ];
+          theme = "agnoster";
         };
       };
       fzf = {

@@ -34,14 +34,13 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    aliza
+    # aliza - to look att MR files
     ansible_2_11
     coreutils
     curl
     dig
     docker-compose
     dracula-theme
-    feh
     fontpreview
     git
     gnumake
@@ -61,7 +60,6 @@ in
     slack
     spotify
     teams
-    tree
     unzip
     unrar
     vault
@@ -72,11 +70,9 @@ in
     # work
     nomad
     minio-client
-    remmina
     consul
     terraform
     azure-cli
-    azuredatastudio
     openssl
     # zsh
     zsh
@@ -84,9 +80,6 @@ in
     # pulseaudio + bluetooth
     pavucontrol
     pulsemixer
-
-
-
     # Sway
     pamixer
     brightnessctl

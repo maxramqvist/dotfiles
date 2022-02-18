@@ -110,7 +110,7 @@ in
       startup = [
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "swayidle -w timeout 900 'swaylock -C $HOME/dotfiles/sway/swaylock.config' timeout 900 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+        # { command = "swayidle -w timeout 1800 'swaylock -C $HOME/dotfiles/sway/swaylock.config'"; }
         # { command = "if grep -q open /proc/acpi/button/lid/LID0/state; then echo 'Locket öppet..'; else echo 'Locket stängt'; fi"; }
       ];
       output = {
