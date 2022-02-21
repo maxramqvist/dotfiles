@@ -275,7 +275,7 @@ in
         userEmail = "max.ramqvist@gmail.com";
       };
       starship = {
-        enable = false;
+        enable = true;
         enableZshIntegration = true;
         settings = {
           add_newline = false;
@@ -324,7 +324,7 @@ in
             "git"
             "z"
           ];
-          theme = "agnoster";
+          #          theme = "agnoster";
         };
       };
       fzf = {
