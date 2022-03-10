@@ -26,6 +26,21 @@ let
         --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
     '';
   });
+  workPkgs = with pkgs; [
+    temporal
+    nomad
+    minio-client
+    consul
+    terraform
+    azure-cli
+    vault
+    openssl
+    teams
+    gnumake
+    docker-compose
+    ansible_2_11
+    wireshark
+  ];
 in
 {
   # Make sure digicert are trusted in OS cert store
@@ -35,15 +50,12 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # aliza - to look att MR files
-    ansible_2_11
     coreutils
     curl
     dig
-    docker-compose
     dracula-theme
     fontpreview
     git
-    gnumake
     go_1_17
     gotop
     gcc
@@ -57,49 +69,21 @@ in
     python310
     ripgrep
     shellcheck
-    slack
     spotify
-    teams
+    slack
     unzip
     unrar
-    vault
+    youtube-dl
     vscode
     nixpkgs-fmt
     wget
-    ## webcamoid
-    # work
-    nomad
-    minio-client
-    consul
-    terraform
-    azure-cli
-    openssl
     # zsh
     zsh
     zsh-z
     # pulseaudio + bluetooth
     pavucontrol
     pulsemixer
-    # Sway
-    pamixer
-    brightnessctl
-    swaylock
-    swayidle
-    wl-clipboard
-    wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
-    wofi-emoji
-    nordic
-    # sway polkit
-    polkit_gnome
-    # sway gtk theming
-    gtk-engine-murrine
-    gtk_engines
-    gsettings-desktop-schemas
-    lxappearance # lxappearance must be started with: "GDK_BACKEND=x11 lxappearance"
-    kora-icon-theme
-    arc-icon-theme
-    qogir-icon-theme
-  ];
+  ] ++ workPkgs;
 
   virtualisation.docker = {
     enable = true;

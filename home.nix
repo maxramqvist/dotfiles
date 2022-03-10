@@ -29,7 +29,7 @@ in
         name = "Dracula";
       };
       font = {
-        name = "BlexMono Nerd Font Mono";
+        name = "Sauce Code Pro Nerd Font Complete";
         size = 12;
       };
     };
@@ -238,7 +238,7 @@ in
         };
         settings = {
           main = {
-            font = "UbuntuMono Nerd Font:size=14";
+            font = "Sauce Code Pro Nerd Font Complete:size=18";
             dpi-aware = "yes";
           };
           cursor = {

@@ -1,5 +1,14 @@
 { config, pkgs, lib, ... }:
 let
+  #  sway_1_6_1_pin = import
+  #    (pkgs.fetchFromGitHub {
+  #      owner = "NixOS"; # NixOS
+  #      repo = "nixpkgs";
+  #      rev = "5a14b59cd75779ab050f9384cbbe3b8aaee00dd5";
+  #      sha256 = "gtGjiLZOKHd0hbAIWp1n4BCnlMg6UshuTKaHw4fKQ6A=";
+  #    })
+  #    { };
+
   colorScheme = import ../color-schemes/dracula.nix;
   increaseBrightness = pkgs.writeShellScriptBin "increaseBrightness" ''
     number=$(brightnessctl get)
@@ -23,34 +32,82 @@ let
   '';
 in
 {
+
+  # If your settings aren't being saved for some applications (gtk3 applications, firefox), like the size of file selection windows, or the size of the save dialog, you will need to enable dconf. 
+  programs.dconf.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    #gtkUsePortal = true;
+    extraPortals = [
+      #sway_1_6_1_pin.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+  # Enable and remove some unused stuff when Electron+Wayland isn't broken anymore...
+  #  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && \
+    export EDITOR=nvim && \
+    export MOZ_ENABLE_WAYLAND=1 && \
+    export WLR_DRM_NO_MODIFIERS=1 && \
+    export SDL_VIDEODRIVER=wayland && \
+    export QT_QPA_PLATFORM=wayland && \
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION="1" && \
+    export _JAVA_AWT_WM_NONREPARENTING=1 && \
+    sway
+  '';
+
   home-manager.users.max.home = {
     sessionVariables = {
       GTK_THEME = "Dracula";
     };
-    packages = [
+    packages = with pkgs; [
+      pamixer
+      brightnessctl
+      swaylock
+      swayidle
+      wl-clipboard
+      wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
+      wofi-emoji
+      nordic
+      # sway polkit
+      polkit_gnome
+      # sway gtk theming
+      gtk-engine-murrine
+      gtk_engines
+      gsettings-desktop-schemas
+      lxappearance # lxappearance must be started with: "GDK_BACKEND=x11 lxappearance"
+      kora-icon-theme
+      arc-icon-theme
+      qogir-icon-theme
       decreaseBrightness
       increaseBrightness
-      pkgs.sway-contrib.grimshot
-      pkgs.swaylock-fancy
+      sway-contrib.grimshot
+      swaylock-fancy
+      #wlroots_0_14
+
     ];
   };
   home-manager.users.max.programs = {
     mako = {
       enable = true;
       anchor = "bottom-right";
-      backgroundColor = "#00000000";
-      borderColor = "#4C7899FF";
-      textColor = "#FFFFFFFF";
-      borderRadius = 0;
-      borderSize = 1;
+      #backgroundColor = "#00000000";
+      #borderColor = "#4C7899FF";
+      #textColor = "#FFFFFFFF";
+      #borderRadius = 0;
+      #borderSize = 1;
       defaultTimeout = 20000; # ms. 0 = no timeout, keep until acknowledged
-      font = "monospace 12";
+      #font = "monospace 12";
       #      iconPath = ""; 
       icons = true;
     };
   };
   home-manager.users.max.wayland.windowManager.sway = {
     enable = true;
+    #package = sway_1_6_1_pin.sway;
+    #package = sway;
     systemdIntegration = true;
     wrapperFeatures.gtk = true;
     extraConfig = ''
@@ -76,7 +133,7 @@ in
         };
       };
       fonts = {
-        names = [ "Roboto Nerd Font Mono" ];
+        names = [ "SauceCodePro Nerd Font Mono" ];
         style = "Regular";
         size = 12.0;
       };

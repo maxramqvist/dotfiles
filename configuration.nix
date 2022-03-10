@@ -12,6 +12,7 @@
       ./apps.nix
       ./wayland-wm-de.nix
       ./9310.nix
+      ./temporary-hardware.nix
     ];
 
   system.stateVersion = "21.11"; # You know.
