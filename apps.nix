@@ -50,6 +50,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # aliza - to look att MR files
+    btop
     coreutils
     curl
     dig
@@ -57,7 +58,6 @@ in
     fontpreview
     git
     go_1_17
-    gotop
     gcc
     jq
     yq
