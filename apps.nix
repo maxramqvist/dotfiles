@@ -83,6 +83,7 @@ in
     # pulseaudio + bluetooth
     pavucontrol
     pulsemixer
+    programmer-calculator
   ] ++ workPkgs;
 
   virtualisation.docker = {
