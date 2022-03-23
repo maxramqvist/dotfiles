@@ -10,7 +10,6 @@
       ./home.nix
       ./set-and-forget.nix
       ./apps.nix
-      ./wayland-wm-de.nix
       ./9310.nix
       ./temporary-hardware.nix
     ];
