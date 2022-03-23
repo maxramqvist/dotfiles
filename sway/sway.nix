@@ -55,6 +55,8 @@ in
     export QT_QPA_PLATFORM=wayland && \
     export QT_WAYLAND_DISABLE_WINDOWDECORATION="1" && \
     export _JAVA_AWT_WM_NONREPARENTING=1 && \
+    #sudo su -c "echo 'on' > '/sys/bus/usb/devices/3-8.3.2/power/control'"
+    #sudo su -c "echo 'on' > '/sys/bus/usb/devices/3-8.3.3/power/control'"
     sway
   '';
 
@@ -167,7 +169,6 @@ in
       startup = [
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        { command = "if swaymsg -t get_outputs | grep 'DP-7' > /dev/null; then sudo su -c \"echo 'on' > '/sys/bus/usb/devices/3-8.3.2/power/control'\"; sudo su -c \"echo 'on' > '/sys/bus/usb/devices/3-8.3.3/power/control'\"; fi"; }
         # { command = "swayidle -w timeout 1800 'swaylock -C $HOME/dotfiles/sway/swaylock.config'"; }
         # { command = "if grep -q open /proc/acpi/button/lid/LID0/state; then echo 'Locket öppet..'; else echo 'Locket stängt'; fi"; }
       ];

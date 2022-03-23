@@ -9,6 +9,13 @@
   boot.kernelParams = [ "ipv6.disable=1" ];
   networking.enableIPv6 = false;
 
+  # No mouse acceleration
+  services.xserver.libinput.mouse.accelProfile = "flat";
+
+  # Fix function-key and set to F1x-mode default, not function keys ffs...
+  boot.extraModprobeConfig = '' 
+    options hid_apple fnmode=0
+  '';
 
   # Network
   programs.nm-applet.enable = true; # the little network chooser icon in tray

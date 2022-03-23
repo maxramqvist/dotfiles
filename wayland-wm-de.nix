@@ -22,7 +22,7 @@
     export QT_QPA_PLATFORM=wayland && \
     export QT_WAYLAND_DISABLE_WINDOWDECORATION="1" && \
     export _JAVA_AWT_WM_NONREPARENTING=1 && \
-    sway
+    WLR_DRM_NO_MODIFIERS=1 sway
   '';
 }
 
