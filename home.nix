@@ -102,6 +102,21 @@ in
               }
             ];
           };
+          jobbet3 = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "DP-7";
+                status = "enable";
+                position = "0,0";
+                mode = "1920x1080@60.000Hz";
+                scale = 1.0;
+              }
+            ];
+          };
           hemma = {
             outputs = [
               {
