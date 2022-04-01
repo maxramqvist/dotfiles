@@ -57,7 +57,7 @@ in
     dracula-theme
     fontpreview
     git
-    go_1_17
+    go_1_18
     gcc
     jq
     yq

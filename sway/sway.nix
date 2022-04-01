@@ -1,14 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  #  sway_1_6_1_pin = import
-  #    (pkgs.fetchFromGitHub {
-  #      owner = "NixOS"; # NixOS
-  #      repo = "nixpkgs";
-  #      rev = "5a14b59cd75779ab050f9384cbbe3b8aaee00dd5";
-  #      sha256 = "gtGjiLZOKHd0hbAIWp1n4BCnlMg6UshuTKaHw4fKQ6A=";
-  #    })
-  #    { };
-
   colorScheme = import ../color-schemes/dracula.nix;
   increaseBrightness = pkgs.writeShellScriptBin "increaseBrightness" ''
     number=$(brightnessctl get)
@@ -67,8 +58,6 @@ in
     packages = with pkgs; [
       pamixer
       brightnessctl
-      swaylock
-      swayidle
       wl-clipboard
       wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
       wofi-emoji
@@ -86,8 +75,6 @@ in
       decreaseBrightness
       increaseBrightness
       sway-contrib.grimshot
-      swaylock-fancy
-      #wlroots_0_14
 
     ];
   };
@@ -95,21 +82,12 @@ in
     mako = {
       enable = true;
       anchor = "bottom-right";
-      #backgroundColor = "#00000000";
-      #borderColor = "#4C7899FF";
-      #textColor = "#FFFFFFFF";
-      #borderRadius = 0;
-      #borderSize = 1;
       defaultTimeout = 20000; # ms. 0 = no timeout, keep until acknowledged
-      #font = "monospace 12";
-      #      iconPath = ""; 
       icons = true;
     };
   };
   home-manager.users.max.wayland.windowManager.sway = {
     enable = true;
-    #package = sway_1_6_1_pin.sway;
-    #package = sway;
     systemdIntegration = true;
     wrapperFeatures.gtk = true;
     extraConfig = ''
@@ -133,6 +111,12 @@ in
           tap = "disabled";
           natural_scroll = "disabled";
         };
+        "type:pointer" = {
+          # mouse
+          accel_profile = "flat";
+          pointer_accel = "-0.6";
+        };
+
       };
       fonts = {
         names = [ "SauceCodePro Nerd Font Mono" ];
@@ -151,7 +135,6 @@ in
         "Mod4+Shift+e" = "exec wofi-emoji";
         "Mod4+d" = "exec wofi --show drun --allow-images";
         "Mod4+Backspace" = "split toggle";
-        "Mod4+Escape" = "exec swaylock -C $HOME/dotfiles/sway/swaylock.config";
         "Print" = "exec grimshot copy area";
         "Control+Print" = "exec grimshot copy screen";
         "Alt+Print" = "exec grimshot save screen";
@@ -169,12 +152,9 @@ in
       startup = [
         { command = "waybar"; }
         { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
-        # { command = "swayidle -w timeout 1800 'swaylock -C $HOME/dotfiles/sway/swaylock.config'"; }
-        # { command = "if grep -q open /proc/acpi/button/lid/LID0/state; then echo 'Locket öppet..'; else echo 'Locket stängt'; fi"; }
+
       ];
       output = {
-        # Set wallpaper
-        #"*" = { bg = "/home/max/dotfiles/bg/jupiter-PIA23444.jpg fill #000000"; };
         "*" = { bg = "#000000 solid_color"; };
       };
     };
