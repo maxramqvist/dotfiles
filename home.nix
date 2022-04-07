@@ -80,7 +80,7 @@ in
                 status = "disable";
               }
               {
-                criteria = "DP-8";
+                criteria = "DP-3";
                 status = "enable";
                 position = "0,0";
                 mode = "3840x2160@60.000Hz";
