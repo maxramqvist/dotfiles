@@ -73,20 +73,6 @@ in
               }
             ];
           };
-          jobbet = {
-            outputs = [
-              {
-                criteria = "eDP-1";
-                status = "disable";
-              }
-              {
-                criteria = "Unknown HP Z27n G2 6CM8060FV2";
-                status = "enable";
-                position = "0,0";
-                mode = "2560x1440@74.971Hz";
-              }
-            ];
-          };
           jobbet2 = {
             outputs = [
               {
@@ -94,26 +80,11 @@ in
                 status = "disable";
               }
               {
-                criteria = "DP-3";
+                criteria = "DP-8";
                 status = "enable";
                 position = "0,0";
                 mode = "3840x2160@60.000Hz";
                 scale = 2.0;
-              }
-            ];
-          };
-          jobbet3 = {
-            outputs = [
-              {
-                criteria = "eDP-1";
-                status = "disable";
-              }
-              {
-                criteria = "DP-7";
-                status = "enable";
-                position = "0,0";
-                mode = "1920x1080@60.000Hz";
-                scale = 1.0;
               }
             ];
           };
@@ -310,6 +281,7 @@ in
           ll = "lsd -l --group-dirs first";
           tree = "lsd --tree";
           tf = "terraform";
+          open = "handlr open";
           aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
           awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/run";
           v = "nvim";

@@ -59,6 +59,7 @@ in
     git
     go_1_18
     gcc
+    handlr
     jq
     yq
     libreoffice
