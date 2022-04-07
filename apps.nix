@@ -61,7 +61,7 @@ in
     gcc
     handlr
     jq
-    yq
+    # yq - broken 2022-04-07
     libreoffice
     lsof
     lua5_1

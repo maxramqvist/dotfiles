@@ -24,9 +24,9 @@ in
     withPython3 = true;
     vimdiffAlias = true;
     extraConfig = ''
-            luafile $HOME/dotfiles/nvim/config.lua
-            luafile $HOME/dotfiles/nvim/lsp_completion.lua
-            luafile $HOME/dotfiles/nvim/telescope.lua
+      luafile $HOME/dotfiles/nvim/config.lua
+      luafile $HOME/dotfiles/nvim/lsp_completion.lua
+      luafile $HOME/dotfiles/nvim/telescope.lua
     '';
     extraPackages = with pkgs; [
 
@@ -41,8 +41,8 @@ in
       nodePackages.typescript-language-server
       gopls
       rnix-lsp # nix lsp server
-      python39
-      python39Packages.python-lsp-server
+      python310
+      python310Packages.python-lsp-server
     ];
     plugins = with pkgs.vimPlugins; [
 
@@ -68,7 +68,7 @@ in
       # Language support
       vim-terraform # terraform ftw
       vim-nix # vim syntax for nix ftw
-      vim-go # lets go!
+      #vim-go # lets go!
 
       # find stuff
       telescope-nvim
