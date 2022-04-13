@@ -16,16 +16,16 @@ let
         --add-flags " --enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
     '';
   });
-  teams = pkgs.teams.overrideAttrs (old: {
-    installPhase = old.installPhase + ''
-      rm $out/bin/teams
+  # teams = pkgs.teams.overrideAttrs (old: {
+  #   installPhase = old.installPhase + ''
+  #     rm $out/bin/teams
 
-      makeWrapper $out/opt/teams/teams $out/bin/teams \
-        --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
-        --prefix PATH : ${lib.makeBinPath [pkgs.xdg-utils]} \
-        --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
-    '';
-  });
+  #     makeWrapper $out/opt/teams/teams $out/bin/teams \
+  #       --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
+  #       --prefix PATH : ${lib.makeBinPath [pkgs.xdg-utils]} \
+  #       --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
+  #   '';
+  # });
   workPkgs = with pkgs; [
     temporal
     nomad
