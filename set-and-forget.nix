@@ -80,9 +80,10 @@
 
   # Power management
   powerManagement = {
+    enable = true;
     powertop.enable = true;
   };
-  #  services.tlp.enable = true; # TLP’s default settings are already optimized for battery life and implement Powertop’s recommendations out of the box. So you may just install and forget it.
+
   services.tlp = {
     enable = true;
     settings = {
@@ -100,6 +101,8 @@
       # heat and increase battery usage:
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MAX_PERF_ON_BAT = 60;
+
+      USB_AUTOSUSPEND = 0; # dont suspend usb devices (keyboard, mouse for example)
     };
   };
 
@@ -111,18 +114,8 @@
 
 
   # Enable OpenGL
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
+  nixpkgs.config.packageOverrides = pkgs: { };
+  hardware.opengl.enable = true;
 
   security.rtkit.enable = true;
 

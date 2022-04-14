@@ -4,28 +4,6 @@ let
   digicert = builtins.fetchurl {
     url = "https://cacerts.digicert.com/DigiCertTLSRSASHA2562020CA1-1.crt.pem";
   };
-  slack = pkgs.slack.overrideAttrs (old: {
-    #   # The flag --enable-features=UseOzonePlatform currently breaks Slack. Start hangs after message "interface 'wl_output' has no event 4"
-    #   #--add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
-    installPhase = old.installPhase + ''
-      rm $out/bin/slack
-
-      makeWrapper $out/lib/slack/slack $out/bin/slack \
-        --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
-        --prefix PATH : ${lib.makeBinPath [pkgs.xdg-utils]} \
-        --add-flags " --enable-features=WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
-    '';
-  });
-  # teams = pkgs.teams.overrideAttrs (old: {
-  #   installPhase = old.installPhase + ''
-  #     rm $out/bin/teams
-
-  #     makeWrapper $out/opt/teams/teams $out/bin/teams \
-  #       --prefix XDG_DATA_DIRS : $GSETTINGS_SCHEMAS_PATH \
-  #       --prefix PATH : ${lib.makeBinPath [pkgs.xdg-utils]} \
-  #       --add-flags "--ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder"
-  #   '';
-  # });
   workPkgs = with pkgs; [
     temporal
     nomad
@@ -55,7 +33,7 @@ in
     curl
     dig
     dracula-theme
-    fontpreview
+    font-manager
     git
     go_1_18
     gcc

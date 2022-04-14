@@ -11,7 +11,6 @@
       ./set-and-forget.nix
       ./apps.nix
       ./9310.nix
-      ./temporary-hardware.nix
     ];
 
   system.stateVersion = "21.11"; # You know.
