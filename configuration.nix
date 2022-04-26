@@ -11,6 +11,7 @@
       ./set-and-forget.nix
       ./apps.nix
       ./9310.nix
+      ./virtualisation.nix
     ];
 
   system.stateVersion = "21.11"; # You know.
@@ -27,7 +28,7 @@
   users.users.max = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "docker" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "audio" "libvirtd" ];
   };
   security.sudo.wheelNeedsPassword = false;
   nixpkgs.config.allowUnfree = true;

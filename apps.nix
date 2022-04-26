@@ -5,12 +5,12 @@ let
     url = "https://cacerts.digicert.com/DigiCertTLSRSASHA2562020CA1-1.crt.pem";
   };
   workPkgs = with pkgs; [
+    #azure-cli
     temporal
     nomad
     minio-client
     consul
     terraform
-    azure-cli
     vault
     openssl
     teams
@@ -64,15 +64,6 @@ in
     pulsemixer
     programmer-calculator
   ] ++ workPkgs;
-
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-      features = {
-        buildkit = true;
-      };
-    };
-  };
 
 }
 
