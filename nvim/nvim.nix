@@ -46,12 +46,13 @@ in
     ];
     plugins = with pkgs.vimPlugins; [
 
-      (plugin "nvim-treesitter/nvim-treesitter")
+      # (plugin "nvim-treesitter/nvim-treesitter")
       (plugin "projekt0n/github-nvim-theme")
       # Tree-sitter with all grammars
-      #      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-      #        plugins: pkgs.tree-sitter.allGrammars)
-      #        ) # improved syntax highlighting, all grammars installed the NixOS way
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+        plugins: pkgs.tree-sitter.allGrammars
+      )
+      ) # improved syntax highlighting, all grammars installed the NixOS way
 
       # sane setup for language servers
       nvim-lspconfig
