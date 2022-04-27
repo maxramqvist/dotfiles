@@ -81,7 +81,6 @@
   # Power management
   powerManagement = {
     enable = true;
-    powertop.enable = true;
   };
 
   services.tlp = {
