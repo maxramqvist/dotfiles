@@ -84,6 +84,17 @@ in
       anchor = "bottom-right";
       defaultTimeout = 20000; # ms. 0 = no timeout, keep until acknowledged
       icons = true;
+      backgroundColor = "#353C4A";
+      borderColor = "#6272A4";
+      textColor = "#FFFFFFFF";
+      progressColor = "over #5588AAFF";
+      borderRadius = 0;
+      borderSize = 1;
+      margin = "10";
+      padding = "5";
+
+      height = 100;
+      width = 300;
     };
   };
   home-manager.users.max.wayland.windowManager.sway = {

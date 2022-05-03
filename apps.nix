@@ -16,7 +16,7 @@ let
     teams
     gnumake
     docker-compose
-    ansible_2_11
+    ansible
     wireshark
   ];
 in
