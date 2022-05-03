@@ -211,7 +211,8 @@ in
       };
       chromium = {
         enable = true;
-        commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
+        package = (import ./chromium.nix);
+        #        commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
         extensions = [
           { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
           { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
@@ -259,8 +260,8 @@ in
           tree = "lsd --tree";
           tf = "terraform";
           open = "handlr open";
-          aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
-          awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/run";
+          aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/dev";
+          awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/dev";
           v = "nvim";
           ip = "ip --color";
           ssh = "TERM=xterm-256color ssh";
