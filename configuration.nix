@@ -12,6 +12,7 @@
       ./apps.nix
       ./9310.nix
       ./virtualisation.nix
+      ./jobbhack.nix
     ];
 
   system.stateVersion = "21.11"; # You know.
