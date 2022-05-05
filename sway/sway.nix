@@ -130,7 +130,7 @@ in
 
       };
       fonts = {
-        names = [ "SauceCodePro Nerd Font Mono" ];
+        names = [ "JetBrains Mono Nerd Font" ];
         style = "Regular";
         size = 12.0;
       };

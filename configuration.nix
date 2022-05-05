@@ -21,8 +21,15 @@
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      nerdfonts
+      (nerdfonts.override { fonts = [ "FiraCode" "Noto" "JetBrainsMono" ]; })
+      noto-fonts-emoji-blob-bin
     ];
+    fontconfig = {
+      defaultFonts = {
+        emoji = [ "Blobmoji" ];
+      };
+    };
+
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

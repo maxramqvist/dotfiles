@@ -46,21 +46,21 @@ in
             x = 0;
             y = 0;
           };
-          size = 14;
+          size = 12;
           normal = {
-            family = "UbuntuMono Nerd Font";
+            family = "JetBrainsMono Nerd Font";
             style = "Medium";
           };
           bold = {
-            family = "UbuntuMono Nerd Font";
+            family = "JetBrainsMono Nerd Font";
             style = "Bold";
           };
           italic = {
-            family = "UbuntuMono Nerd Font";
+            family = "JetBrainsMono Nerd Font";
             style = "Italic";
           };
           bold_italic = {
-            family = "UbuntuMono Nerd Font";
+            family = "JetBrainsMono Nerd Font";
             style = "Bold Italic";
           };
         };

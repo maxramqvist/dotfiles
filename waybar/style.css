@@ -64,7 +64,7 @@
 #waybar {
     background: @bg;
     color: @light;
-    font-family: Noto Sans;
+    font-family: JetBrainsMono Nerd Font;
     font-weight: bold;
 }
 

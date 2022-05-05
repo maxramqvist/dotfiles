@@ -29,7 +29,7 @@ in
         name = "Dracula";
       };
       font = {
-        name = "Sauce Code Pro Nerd Font Complete";
+        name = "JetBrains Mono";
         size = 12;
       };
     };
@@ -211,27 +211,12 @@ in
       };
       chromium = {
         enable = true;
-        package = (import ./chromium.nix);
-        #        commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
+        #package = (import ./chromium.nix);
+        commandLineArgs = [ "--enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,VaapiVideoDecoder,VaapiVideoEncoder" "--ozone-platform=wayland" ];
         extensions = [
           { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
           { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
         ];
-      };
-      foot = {
-        enable = false;
-        server = {
-          enable = true;
-        };
-        settings = {
-          main = {
-            font = "UbuntuMono Nerd Font:size=14";
-            dpi-aware = "yes";
-          };
-          mouse = {
-            hide-when-typing = "yes";
-          };
-        };
       };
       git = {
         enable = true;
