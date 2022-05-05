@@ -245,7 +245,8 @@ in
           tree = "lsd --tree";
           tf = "terraform";
           open = "handlr open";
-          aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/dev";
+          aw = "$HOME/git/aw/tooling-awesome-cli-js/bin/run";
+          awd = "$HOME/git/aw/tooling-awesome-cli-js/bin/dev";
           awl = "AWESOME_API=http://localhost:5050 $HOME/git/aw/tooling-awesome-cli-js/bin/dev";
           v = "nvim";
           ip = "ip --color";

@@ -11,7 +11,7 @@ in
       enable = true;
       settings = {
         live_config_reload = true;
-        env.TERM = "alacritty";
+        env.TERM = "xterm-256color";
         shell.program = "${pkgs.zsh}/bin/zsh";
         selection.save_to_clipboard = false;
         url = {
