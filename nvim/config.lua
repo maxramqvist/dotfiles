@@ -55,27 +55,27 @@ opt.hidden = true
 
 require('github-theme').setup({
   theme_style = "dark_default",
---  function_style = "italic",
---  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  --  function_style = "italic",
+  --  sidebars = {"qf", "vista_kind", "terminal", "packer"},
 
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
---  colors = {hint = "orange", error = "#ff0000"}
+  --  colors = {hint = "orange", error = "#ff0000"}
 })
 -- status line
-require'lualine'.setup {
-options = {
+require 'lualine'.setup {
+  options = {
     theme = 'auto',
   }
 }
 
 
 --Treesitter setup
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+require 'nvim-treesitter.configs'.setup {
+  --ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true, -- false will disable the whole extension
     ignore_install = { "c", "rust", "cuda", "kotlin", "fennel", "tlaplus", "cpp" }, -- List of parsers to ignore installing
-    disable = { "c", "rust", "cuda", "kotlin", "fennel", "tlaplus", "cpp" },  -- list of language that will be disabled
+    disable = { "c", "rust", "cuda", "kotlin", "fennel", "tlaplus", "cpp" }, -- list of language that will be disabled
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -83,4 +83,3 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-
