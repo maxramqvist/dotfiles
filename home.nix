@@ -93,11 +93,12 @@ in
               {
                 criteria = "eDP-1";
                 status = "disable";
+                position = "0,0";
               }
               {
                 criteria = "Unknown HP Z27n G2 6CM80602TX";
                 status = "enable";
-                position = "0,0";
+                position = "2400,0";
                 mode = "2560x1440@74.971Hz";
               }
             ];

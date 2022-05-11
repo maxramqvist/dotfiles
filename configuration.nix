@@ -21,7 +21,7 @@
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Ubuntu" ]; })
       noto-fonts-emoji-blob-bin
     ];
     fontconfig = {

@@ -30,6 +30,7 @@ in
     '';
     extraPackages = with pkgs; [
 
+      tree-sitter
       # Requirements for treesitter
       gcc
       fd
@@ -65,6 +66,7 @@ in
       # snippets
       luasnip
       cmp_luasnip
+
 
       # Language support
       vim-terraform # terraform ftw

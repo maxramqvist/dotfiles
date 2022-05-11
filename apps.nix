@@ -9,6 +9,7 @@ let
     temporal
     nomad
     minio-client
+    discord
     consul
     terraform
     vault
@@ -18,6 +19,7 @@ let
     docker-compose
     ansible
     wireshark
+    remmina
   ];
 in
 {
@@ -37,7 +39,7 @@ in
     git
     go_1_18
     gcc
-    handlr
+    handlr # A better xdg-utils: https://github.com/chmln/handlr
     jq
     # yq - broken 2022-04-07
     libreoffice
@@ -62,7 +64,6 @@ in
     # pulseaudio + bluetooth
     pavucontrol
     pulsemixer
-    programmer-calculator
   ] ++ workPkgs;
 
 }
