@@ -125,7 +125,7 @@ in
         "type:pointer" = {
           # mouse
           accel_profile = "flat";
-          pointer_accel = "-0.6";
+          pointer_accel = "-0.4";
         };
 
       };
